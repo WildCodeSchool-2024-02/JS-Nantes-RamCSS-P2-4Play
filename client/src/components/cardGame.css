@@ -4,4 +4,9 @@
   font-family: "Grandstander";
   color: white;
   display: flex;
+  padding: 1rem;
+}
+
+img {
+  width: 120px;
 }
