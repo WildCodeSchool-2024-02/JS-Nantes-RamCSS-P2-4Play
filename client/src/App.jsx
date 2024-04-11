@@ -6,7 +6,7 @@ function App() {
     {
       title: "Fromage pendu",
       description: "Trouve le bon mot, sauve un fromage !",
-      image: "",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoWfVNkdGC8nPGakjzYP97v4KAtjRloLpJbG5WKij9LQ&s",
     },
     {
       title: "Twisted Taunts",

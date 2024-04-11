@@ -1,0 +1,7 @@
+.imgContainer {
+  background-color: #2cbfe2;
+  border-radius: 0.938rem;
+  font-family: "Grandstander";
+  color: white;
+  display: flex;
+}
