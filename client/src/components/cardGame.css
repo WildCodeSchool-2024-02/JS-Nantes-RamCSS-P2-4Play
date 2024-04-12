@@ -1,0 +1,35 @@
+.imgContainer {
+  background-color: #2cbfe2;
+  border-radius: 1rem;
+  font-family: "Grandstander";
+  color: white;
+  display: flex;
+  padding: 1rem;
+  height: 10rem;
+  width: 70vw;
+}
+
+img {
+  width: 15vw;
+  border-radius: 7.5vh;
+  height: 15vh;
+  width: 15vh;
+  align-self: center;
+}
+
+figcaption {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 0.5rem;
+}
+
+h2 {
+  text-align: center;
+  font-size: medium;
+}
+
+p {
+  text-align: center;
+  font-size: small;
+}
