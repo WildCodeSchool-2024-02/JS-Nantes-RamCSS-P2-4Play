@@ -1,6 +1,8 @@
 import HomePage from "./components/HomePage";
 import Navbar from "./components/navbar/Navbar";
 import "./App.css";
+import GameLayout from "./components/GameLayout"
+import HangCheese from "./components/Hangcheese";
 
 function App() {
   const gameItems = [
@@ -27,9 +29,11 @@ function App() {
   ]
 
   return (
+
   <div>
     <Navbar />
     <HomePage gameItems={gameItems} />
+    <GameLayout />
   </div>
   )
 };
