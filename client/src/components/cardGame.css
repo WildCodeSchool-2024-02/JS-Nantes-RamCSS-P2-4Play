@@ -5,12 +5,12 @@
   color: white;
   display: flex;
   padding: 1rem;
-  width: 30rem;
   height: 10rem;
+  width: 70vw;
 }
 
 img {
-  width: 7.5rem;
+  width: 15vw;
   border-radius: 7.5vh;
   height: 15vh;
   width: 15vh;
@@ -26,8 +26,10 @@ figcaption {
 
 h2 {
   text-align: center;
+  font-size: medium;
 }
 
 p {
-  text-align: justify;
+  text-align: center;
+  font-size: small;
 }
