@@ -1,0 +1,13 @@
+.navbar {
+  background-color: #ffb703;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+}
+
+.logo {
+  width: 65px;
+  height: auto;
+  border-radius: 10px;
+}

@@ -1,4 +1,5 @@
 import CardGame from "./CardGame"
+import "./homePage.css";
 
 function HomePage({ gameItems }) {
     return (
