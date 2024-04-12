@@ -3,11 +3,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80px;
+  height: 12vh;
 }
 
 .logo {
-  width: 65px;
+  width: 10vh;
   height: auto;
   border-radius: 10px;
 }
