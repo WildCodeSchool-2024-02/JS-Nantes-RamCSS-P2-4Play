@@ -13,8 +13,9 @@ import { KeyboardReact as Keyboard } from "react-simple-keyboard";
 import "react-simple-keyboard/build/css/index.css";
 import "./KeyboardContainer.css";
 
-function KeyboardContainer() {
-  const [input, setInput] = useState("");
+function KeyboardContainer({ input, setInput }) {
+  // State has been lifted up to parent game components
+  // const [input, setInput] = useState("");
   const [layout, setLayout] = useState("default");
   const keyboard = useRef();
 
