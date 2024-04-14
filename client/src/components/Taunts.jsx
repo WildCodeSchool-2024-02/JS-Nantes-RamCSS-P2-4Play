@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import KeyboardContainer from "./keyboard/KeyboardContainer";
+import TauntGame from "./TauntGame";
 
 function Taunts() {
   const [input, setInput] = useState("");
@@ -26,9 +27,7 @@ function Taunts() {
       {!insult ? (
         <div>Loading</div>
       ) : (
-        <div>
-          <h2>{insult.slang}</h2>
-        </div>
+        <TauntGame insult={insult} input={input} />
       )}
 
       <KeyboardContainer input={input} setInput={setInput} />
