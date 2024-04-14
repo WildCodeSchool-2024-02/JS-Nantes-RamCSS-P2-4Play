@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 function getRandomInt(n) {
   return Math.floor(Math.random() * n);
 }
@@ -17,7 +19,24 @@ function scrambledInsult(insult) {
   const anagramInsult = arr.join(""); // Convert Array to string
   return anagramInsult;
 }
-function TauntGame({ insult }) {
-  return <h1>{scrambledInsult(insult).toUpperCase()}</h1>;
+function emptyAnswer(insult) {
+  //   const length = insult.slang.length;
+  //   const arr = new Array(length).fill("-").join();
+  //     return arr;
+
+  return new Array(insult.slang.length).fill("-").join("");
 }
+function TauntGame({ insult }) {
+  // eslint-disable-next-line no-unused-vars
+  const [anagram, setAnagram] = useState(scrambledInsult(insult));
+  // eslint-disable-next-line no-unused-vars
+  const [answer, setAnswer] = useState(emptyAnswer(insult));
+  return (
+    <>
+      <h1>{anagram.toUpperCase()}</h1>
+      <h1>{answer}</h1>
+    </>
+  );
+}
+
 export default TauntGame;

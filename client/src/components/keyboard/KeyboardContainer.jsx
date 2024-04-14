@@ -46,7 +46,9 @@ function KeyboardContainer({ input, setInput }) {
 
   return (
     <div>
+      {/*  need to hide the input in the css - allow each game to display input how it wants */}
       <input
+        // style={{ display: "none" }}
         value={input}
         // placeholder //
         onChange={onChangeInput}
