@@ -11,22 +11,26 @@ const gameItems = [
     title: "Fromage pendu",
     description: "Trouve le bon mot, sauve un fromage !",
     image: "./src/assets/images/fromagependu_img.png",
+    link: "1",
   },
   {
     title: "Twisted Taunts",
     description: "Concealed comebacks",
     image: "./src/assets/images/twisted_img.png",
+    link: "2",
   },
   {
     title: "Mo'tif",
     description: "Le jeu qui va vous rendre addic'tif",
     image: "./src/assets/images/motif_img.png",
+    link: "3",
   },
   {
     title: "Synapsyndromes",
     description:
       "Chaque synapse compte pour démêler le verbe et vous faire naviguer dans un océan de langage ludique !",
     image: "./src/assets/images/synap_img.png",
+    link:"4",
   },
 ];
 const router = createBrowserRouter([
