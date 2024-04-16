@@ -1,15 +1,14 @@
 import HomePage from "./components/HomePage";
 import Navbar from "./components/navbar/Navbar";
 import "./App.css";
-import GameLayout from "./components/GameLayout"
-import HangCheese from "./components/Hangcheese";
+import GameLayout from "./components/GameLayout";
 
 function App() {
   const gameItems = [
     {
       title: "Fromage pendu",
       description: "Trouve le bon mot, sauve un fromage !",
-      image:"./src/assets/images/fromagependu_img.png",
+      image: "./src/assets/images/fromagependu_img.png",
     },
     {
       title: "Twisted Taunts",
@@ -23,19 +22,19 @@ function App() {
     },
     {
       title: "Synapsyndromes",
-      description: "Chaque synapse compte pour démêler le verbe et vous faire naviguer dans un océan de langage ludique !",
+      description:
+        "Chaque synapse compte pour démêler le verbe et vous faire naviguer dans un océan de langage ludique !",
       image: "./src/assets/images/synap_img.png",
     },
-  ]
+  ];
 
   return (
+    <div>
+      <Navbar />
+      <HomePage gameItems={gameItems} />
+      <GameLayout />
+    </div>
+  );
+}
 
-  <div>
-    <Navbar />
-    <HomePage gameItems={gameItems} />
-    <GameLayout />
-  </div>
-  )
-};
-
-export default App
+export default App;

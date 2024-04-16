@@ -1,5 +1,5 @@
-function GameLayout() {
-    return <div></div>;
-}
+// function GameLayout() {
+//   return <div></div>;
+// }
 
-export default GameLayout; 
+// export default GameLayout;
