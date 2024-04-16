@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import KeyboardContainer from "./keyboard/KeyboardContainer";
+import KeyboardContainer from "../keyboard/KeyboardContainer";
 import TauntGame from "./TauntGame";
 
 function Taunts() {

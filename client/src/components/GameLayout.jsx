@@ -1,5 +1,5 @@
 function GameLayout() {
-    return <div></div>;
+  return <div>{/* needs to render each diff game component */}</div>;
 }
 
-export default GameLayout; 
+export default GameLayout;

@@ -4,7 +4,8 @@ import { KeyboardReact as Keyboard } from "react-simple-keyboard";
 // DEPS: npm install react-simple-keyboard --save
 // You just need KeyboardWrapper.jsx and keyboard-styles.css in a folder
 
-// Mobile layout theme demo here : https://hodgef.com/simple-keyboard/editor/?d=hodgef/simple-keyboard-npm-demos/tree/mobile
+// Mobile layout theme demo here :
+
 // NB a lot of themes / demos use vanilla JS; you need to find the options used when a New Keyboard class call is made and then
 // use those as props to pass to the <Keyboard /> component
 
