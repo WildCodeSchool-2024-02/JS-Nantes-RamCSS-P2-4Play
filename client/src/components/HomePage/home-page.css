@@ -4,4 +4,9 @@ ul {
   align-items: center;
   margin: 2rem;
   gap: 3.5rem;
+  list-style: none;
+}
+
+ul > li > a {
+  text-decoration: none;
 }

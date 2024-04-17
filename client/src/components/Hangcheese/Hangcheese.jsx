@@ -3,6 +3,7 @@ import KeyboardContainer from "../keyboard/KeyboardContainer";
 
 
 function HangCheese() {
+
      const [input, setInput] = useState("");
      return (
           <div>
@@ -14,4 +15,6 @@ function HangCheese() {
 }
 
 export default HangCheese;
+
+
 
