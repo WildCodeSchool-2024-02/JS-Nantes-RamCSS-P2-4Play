@@ -14,18 +14,12 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": [
-    "react-refresh"
-  ],
+  "plugins": ["react-refresh"],
   "rules": {
     "no-console": [
       "error",
       {
-        "allow": [
-          "error",
-          "info",
-          "warn"
-        ]
+        "allow": ["error", "info", "warn"]
       }
     ],
     "react/react-in-jsx-scope": "off",
