@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import KeyboardContainer from "../keyboard/KeyboardContainer";
 
 function Motif() {
+  const [solution, setSolution] = useState("");
   const [input, setInput] = useState("");
-  const [solution, setSolution] = useState(null);
 
   useEffect(() => {
     fetch("https://my-json-server.typicode.com/florine-vnt/words-api/coiffeurs")
