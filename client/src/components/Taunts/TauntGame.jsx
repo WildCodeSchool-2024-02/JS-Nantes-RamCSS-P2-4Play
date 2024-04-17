@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function getRandomInt(n) {
   return Math.floor(Math.random() * n);
@@ -32,24 +32,24 @@ function TauntGame({ insult, input }) {
   // eslint-disable-next-line no-unused-vars
   const [answer, setAnswer] = useState(emptyAnswer(insult));
 
-  useEffect(() => {
-    //  make input appear in empty answer here using setAnswer add logic to stop extra chars.
-    // if (input.length <= answer.length) {
-    //   let latestInputLetter = input[input.length - 1];
-    //   let answerArray = answer.split("");
-    //   answerArray[input.length - 1] = latestInputLetter;
-    //   let newAnswer = answerArray.join("");
-    //   setAnswer(newAnswer);
-    // }
-    // if (input.length === answer.length) {
-    //   console.log(input, answer);
-    //   if (input == answer) {
-    //     console.log("confetti");
-    //   } else {
-    //     console.log("you suck");
-    //   }
-    // }
-  }, [input]);
+  // useEffect(() => {
+  //   //  make input appear in empty answer here using setAnswer add logic to stop extra chars.
+  //   if (input.length <= answer.length) {
+  //     let latestInputLetter = input[input.length - 1];
+  //     let answerArray = answer.split("");
+  //     answerArray[input.length - 1] = latestInputLetter;
+  //     let newAnswer = answerArray.join("");
+  //     setAnswer(newAnswer);
+  //   }
+  //   if (input.length === answer.length) {
+  //     console.log(input, answer);
+  //     if (input === answer) {
+  //       console.log("confetti");
+  //     } else {
+  //       console.log("you suck");
+  //     }
+  //   }
+  // }, [input]);
 
   return (
     <>
