@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import CardGame from "./CardGame";
 import "./home-page.css";
 
@@ -26,21 +26,21 @@ const gameItems = [
     description:
       "Chaque synapse compte pour démêler le verbe et vous faire naviguer dans un océan de langage ludique !",
     image: "./src/assets/images/synap_img.png",
-    link:"/synaps",
+    link: "/synaps",
   },
 ];
 
 function HomePage() {
+  const urlbase = "http://localhost:3000"; 
   return (
     <>
       {/* render a CardGame component to each element of the props array */}
       <ul>
         {gameItems.map((item) => (
           <li key={item.title}>
-        <Link to={`/${item.link}`}>
-          <CardGame gameItems={item} />
-        </Link>
-
+            <NavLink to={urlbase+item.link}>
+              <CardGame gameItems={item} />
+            </NavLink>
           </li>
         ))}
       </ul>
