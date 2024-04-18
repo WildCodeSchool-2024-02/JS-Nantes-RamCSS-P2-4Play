@@ -32,6 +32,7 @@ function TauntGame({ insult, input }) {
   const [anagram, setAnagram] = useState(scrambledInsult(insult));
 
   const [answer, setAnswer] = useState(emptyAnswer(insult));
+  const [endMessage, setEndMessage] = useState("");
 
   useEffect(() => {
     //  make input appear in empty answer here using setAnswer add logic to stop extra chars.
@@ -42,15 +43,25 @@ function TauntGame({ insult, input }) {
       const newAnswer = answerArray.join("");
       setAnswer(newAnswer);
     }
+    const winMessage = insult.def_en + insult.def_fr;
+    if (!answer.includes("-")) {
+      if (answer === insult.slang.toLowerCase()) {
+        setEndMessage(winMessage);
+        // console.log("Hi there, wassup ?");
+      } else {
+        setEndMessage("YOU SUCK");
+      }
+    }
 
     // console.log("My input", input);
     // console.log("My insult", insult.slang);
+    // console.log("My answer", answer);
 
-    if (!answer.includes("-")) {
-      if (input === insult.slang.toLowerCase()) {
-        // console.log("Hi there, wassup ?");
-      }
-    }
+    // !answer.includes("-") && input === insult.slang.toLowerCase() ? (
+    //   <h1>WOOT!</h1>
+    // ) : (
+    //   <h2>NOT WOOT!</h2>
+    // );
 
     // if (input=== answer) {
     //   console.log(input, answer);
@@ -60,13 +71,14 @@ function TauntGame({ insult, input }) {
     //     console.log("you suck");
     //   }
     // }
-  }, [input, answer, insult.slang]);
+  }, [input, answer, insult.slang, insult.def_en, insult.def_fr]);
 
   return (
     <>
-      <h1>{anagram.toUpperCase()}</h1>
+      <h1>{anagram.toLowerCase()}</h1>
       <h1>{answer}</h1>
       <div>{input}</div>
+      <div>{endMessage}</div>
     </>
   );
 }

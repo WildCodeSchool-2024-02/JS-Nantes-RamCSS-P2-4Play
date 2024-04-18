@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import KeyboardContainer from "../keyboard/KeyboardContainer";
 import TauntGame from "./TauntGame";
 
@@ -14,11 +14,15 @@ function Taunts() {
     const response = await fetch(insultURL);
     const newInsult = await response.json();
     setInsult(newInsult);
-    // console.log(newInsult);
+    // console.log("My new insult", newInsult);
   }
 
+  const initialised = useRef(false);
   useEffect(() => {
-    getInsult();
+    if (!initialised.current) {
+      initialised.current = true;
+      getInsult();
+    }
   }, []);
 
   return (
