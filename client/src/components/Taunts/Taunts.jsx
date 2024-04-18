@@ -14,6 +14,7 @@ function Taunts() {
     const response = await fetch(insultURL);
     const newInsult = await response.json();
     setInsult(newInsult);
+    // console.log(newInsult);
   }
 
   useEffect(() => {
@@ -22,8 +23,6 @@ function Taunts() {
 
   return (
     <>
-      <h1>Salut c'est moi Taunts</h1>
-
       {!insult ? (
         <div>Loading</div>
       ) : (
