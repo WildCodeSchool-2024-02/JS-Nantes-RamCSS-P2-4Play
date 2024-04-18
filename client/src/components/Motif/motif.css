@@ -1,0 +1,27 @@
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  padding: 1rem;
+}
+
+header {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+
+header > img {
+  border-radius: 7.5vh;
+  width: 15vw;
+  width: 15vh;
+  height: 15vh;
+}
+
+h1 {
+  color: #2cbfe2;
+  font-family: "Grandstander";
+  font-size: 2.5rem;
+}
