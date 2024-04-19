@@ -31,14 +31,14 @@ const gameItems = [
 ];
 
 function HomePage() {
-  const urlbase = "http://localhost:3000"; 
+  const urlbase = "http://localhost:3000";
   return (
     <>
       {/* render a CardGame component to each element of the props array */}
       <ul>
         {gameItems.map((item) => (
           <li key={item.title}>
-            <NavLink to={urlbase+item.link}>
+            <NavLink to={urlbase + item.link}>
               <CardGame gameItems={item} />
             </NavLink>
           </li>

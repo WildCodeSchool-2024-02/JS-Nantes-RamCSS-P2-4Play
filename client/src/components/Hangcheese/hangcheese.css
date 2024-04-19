@@ -1,63 +1,59 @@
 .fromageStyle {
-    max-width: 800px;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    margin: 0 auto;
-    align-items: center;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 0 auto;
+  align-items: center;
 }
 
 h1 {
-    text-align: center;
+  text-align: center;
 }
 
 .cheesePendu {
-    height: 10px;
-    width: 250px;
-    background-color: black;
-
+  height: 10px;
+  width: 250px;
+  background-color: black;
 }
 
 .cheesePendu1 {
-    height: 400px;
-    width: 10px;
-    background-color: black;
-    margin-left: 120px;
+  height: 400px;
+  width: 10px;
+  background-color: black;
+  margin-left: 120px;
 }
 
 .cheesePendu3 {
-    height: 10px;
-    width: 200px;
-    background-color: black;
-    margin-left: 120px;
-
+  height: 10px;
+  width: 200px;
+  background-color: black;
+  margin-left: 120px;
 }
 
 .cheesePendu4 {
-    height: 50px;
-    width: 10px;
-    background-color: black;
-    margin-left: 310px;
-    position: absolute;
-
+  height: 50px;
+  width: 10px;
+  background-color: black;
+  margin-left: 310px;
+  position: absolute;
 }
 
 .pieceofCheese {
-    width: 130px;
-    height: 80px;
-    border: 10px solid #FFD700;
-    border-radius: 5%;
-    margin-left: 250px;
-    position: relative;
-    top: 130px;
-    background-color: #FFD700;
+  width: 130px;
+  height: 80px;
+  border: 10px solid #ffd700;
+  border-radius: 5%;
+  margin-left: 250px;
+  position: relative;
+  top: 130px;
+  background-color: #ffd700;
 }
 
 .cheeseWord {
-    display: flex;
-    gap: .25em;
-    font-size: 6rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    
+  display: flex;
+  gap: 0.25em;
+  font-size: 6rem;
+  font-weight: bold;
+  text-transform: uppercase;
 }

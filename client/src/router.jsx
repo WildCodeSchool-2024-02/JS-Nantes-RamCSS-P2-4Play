@@ -6,7 +6,6 @@ import Taunts from "./components/Taunts/Taunts";
 import Motif from "./components/Motif/Motif";
 import Synaps from "./components/Synaps/Synaps";
 
-
 const router = createBrowserRouter([
   {
     path: "/",
