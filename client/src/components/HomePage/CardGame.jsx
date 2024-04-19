@@ -1,4 +1,4 @@
-import "./cardGame.css";
+import "./card-game.css";
 
 function CardGame({ gameItems }) {
   // ! Add a better alt description

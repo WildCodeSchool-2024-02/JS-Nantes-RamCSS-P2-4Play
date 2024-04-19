@@ -1,0 +1,45 @@
+.motif-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  padding: 1rem;
+}
+
+.motif-game > header {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.motif-game > header > img {
+  border-radius: 7.5vh;
+  width: 15vw;
+  width: 15vh;
+  height: 15vh;
+}
+
+.motif-game > header > h3 {
+  color: #2cbfe2;
+  font-family: "Grandstander";
+  font-size: 2.5rem;
+}
+
+.grille-jeux {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  padding: 10px;
+}
+
+.grille-jeux > div {
+  border: solid;
+  border-color: #ffb703;
+  padding: 5px;
+  background-color: white;
+}
+
+.grille-jeux > .first-letter {
+  background-color: red;
+}
