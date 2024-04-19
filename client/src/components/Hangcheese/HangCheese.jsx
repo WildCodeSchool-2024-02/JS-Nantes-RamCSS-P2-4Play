@@ -6,7 +6,7 @@ import HangcheeseWord from "./HangcheeseWord"
 
 
 function HangCheese() {
-
+     // Commentaire pour commit
      const [input, setInput] = useState(""); // input initialisé avec une chaîne vide (pour le clavier)
      const [fromage, setFromage] = useState(null);
 
