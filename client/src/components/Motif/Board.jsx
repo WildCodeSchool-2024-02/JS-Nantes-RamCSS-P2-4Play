@@ -3,7 +3,6 @@
 
 // function Board(){
 //     const [board, setBoard] = useState(boardDefault)
-       
 
 //     return (
 //         <section className="board">
