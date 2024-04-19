@@ -9,7 +9,7 @@
   width: 70vw;
 }
 
-img {
+.imgContainer img {
   width: 15vw;
   border-radius: 7.5vh;
   height: 15vh;

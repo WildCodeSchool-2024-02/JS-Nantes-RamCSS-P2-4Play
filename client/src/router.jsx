@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import HomePage from "./components/HomePage/HomePage";
-import HangCheese from "./components/Hangcheese/HangCheese";
+import Hangcheese from "./components/Hangcheese/Hangcheese";
 import Taunts from "./components/Taunts/Taunts";
 import Motif from "./components/Motif/Motif";
 import Synaps from "./components/Synaps/Synaps";
@@ -17,8 +17,8 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "hangcheese",
-        element: <HangCheese />,
+        path: "/hangcheese",
+        element: <Hangcheese />,
       },
       {
         path: "/taunts",
