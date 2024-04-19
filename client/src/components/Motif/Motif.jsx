@@ -94,4 +94,4 @@ function Motif() {
   );
 }
 
-export default Motif
+export default Motif;
