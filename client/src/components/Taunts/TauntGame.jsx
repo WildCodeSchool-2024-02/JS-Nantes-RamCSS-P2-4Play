@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import EndMessage from "./EndMessage";
 
 function getRandomInt(n) {
   return Math.floor(Math.random() * n);
@@ -33,6 +34,7 @@ function TauntGame({ insult, input }) {
 
   const [answer, setAnswer] = useState(emptyAnswer(insult));
   const [endMessage, setEndMessage] = useState("");
+  const [gameOver, setGameOver] = useState(false);
 
   useEffect(() => {
     //  make input appear in empty answer here using setAnswer add logic to stop extra chars.
@@ -43,44 +45,32 @@ function TauntGame({ insult, input }) {
       const newAnswer = answerArray.join("");
       setAnswer(newAnswer);
     }
-    const winMessage = insult.def_en + insult.def_fr;
+    // add a win/lose condition
+
     if (!answer.includes("-")) {
-      if (answer === insult.slang.toLowerCase()) {
-        setEndMessage(winMessage);
-        // console.log("Hi there, wassup ?");
+      if (answer === insult.slang.toUpperCase()) {
+        setEndMessage("You Win");
       } else {
         setEndMessage("YOU SUCK");
       }
+      setGameOver(true);
     }
-
-    // console.log("My input", input);
-    // console.log("My insult", insult.slang);
-    // console.log("My answer", answer);
-
-    // !answer.includes("-") && input === insult.slang.toLowerCase() ? (
-    //   <h1>WOOT!</h1>
-    // ) : (
-    //   <h2>NOT WOOT!</h2>
-    // );
-
-    // if (input=== answer) {
-    //   console.log(input, answer);
-    //   if (input === answer) {
-    //     console.log("confetti");
-    //   } else {
-    //     console.log("you suck");
-    //   }
-    // }
-  }, [input, answer, insult.slang, insult.def_en, insult.def_fr]);
+  }, [input, answer, insult.slang]);
 
   return (
     <>
-      <h1>{anagram.toLowerCase()}</h1>
+      <h1>{anagram.toUpperCase()}</h1>
       <h1>{answer}</h1>
       <div>{input}</div>
-      <div>{endMessage}</div>
+      {gameOver ? <EndMessage endMessage={endMessage} insult={insult} /> : null}
     </>
   );
 }
 
 export default TauntGame;
+//  react confetti boom
+// TODO add in two modals - one win, one lose
+// win - affiche two defns deblock timed confetti
+// lose - affiche meassage saying that you're crap
+//  add a timer to restart the game once over,
+// fetch the next word.

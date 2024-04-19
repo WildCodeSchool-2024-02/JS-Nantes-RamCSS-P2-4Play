@@ -27,6 +27,7 @@ function Taunts() {
 
   return (
     <>
+      <h1>Twisted Taunts</h1>
       {!insult ? (
         <div>Loading</div>
       ) : (
