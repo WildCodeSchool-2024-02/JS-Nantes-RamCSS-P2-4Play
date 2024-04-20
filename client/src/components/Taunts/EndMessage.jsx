@@ -7,24 +7,27 @@ function EndMessage({ endMessage, insult }) {
       <div>{endMessage}</div>
       {endMessage === "You Win" ? (
         <div>
-          MORE WIN{" "}
+          YOU'RE SMARTER THAN YOU LOOK!{" "}
           <Confetti
             mode="fall"
             x={0.5}
-            y={0.1}
-            particleCount={50}
+            y={0}
+            particleCount={500}
             deg={270}
-            shapeSize={8}
+            shapeSize={12}
             spreadDeg={45}
-            effectInterval={2000}
-            effectCount={3}
-            colors={["#ff577f", "#ff884b", "#ffd384", "#fff9b0", "#3498db"]}
+            effectInterval={10000}
+            effectCount={1}
+            colors={["#8ECAE6", "#219EBC", "#023047", "#FFB703", "#FB8500"]}
           />
         </div>
       ) : (
-        <div>
-          MORE LOSE <GameOver />
-        </div>
+        <>
+          <div>TRY AGAIN, DO BETTER</div>
+          <div>
+            <GameOver />
+          </div>
+        </>
       )}
 
       <div> {insult.slang}</div>

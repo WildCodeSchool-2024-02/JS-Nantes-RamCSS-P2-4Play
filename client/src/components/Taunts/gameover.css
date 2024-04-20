@@ -1,6 +1,6 @@
 .gameover {
-  font-family: monospace;
-  font-size: 8em;
+  font-family: "Grandstander";
+  font-size: 5em;
   text-align: center;
   animation-name: example;
   animation-duration: 1s;
@@ -9,44 +9,42 @@
 
 @keyframes example {
   0% {
-    color: lime;
-    text-shadow: 0 0 20px green;
+    color: #219ebc;
+    text-shadow: 0 0 20px black;
   }
 
   25% {
-    color: green;
-    text-shadow: 2px 2px 2px lime;
+    color: #219ebc;
+    text-shadow: 2px 2px 2px black;
     transform: translate(-2px, 1px);
   }
 
   40% {
-    color: lime;
+    color: #219ebc;
     text-shadow: none;
     transform: translate(0, 0);
   }
 
   50% {
-    color: green;
-    text-shadow:
-      5px 5px 2px blue,
-      -5px -5px 2px red;
+    color: #219ebc;
+    text-shadow: black -5px -5px 2px;
     transform: translate(0px, 5px);
   }
 
   70% {
-    color: lime;
+    color: #219ebc;
     text-shadow: none;
     transform: translate(0, 0);
   }
 
   80% {
-    color: lime;
-    text-shadow: 0 0 20px green;
+    color: #219ebc;
+    text-shadow: 0 0 20px black;
     transform: translate(-2px, 1px);
   }
 
   100% {
-    color: lime;
+    color: #219ebc;
     text-shadow: none;
   }
 }
