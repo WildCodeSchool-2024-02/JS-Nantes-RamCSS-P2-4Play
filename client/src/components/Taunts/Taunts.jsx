@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import KeyboardContainer from "../keyboard/KeyboardContainer";
 import TauntGame from "./TauntGame";
+import "./taunts.css";
 
 function Taunts() {
   const [input, setInput] = useState("");
@@ -26,7 +27,7 @@ function Taunts() {
   }, []);
 
   return (
-    <>
+    <div className="tauntsgame">
       <h1>Twisted Taunts</h1>
       {!insult ? (
         <div>Loading</div>
@@ -35,7 +36,7 @@ function Taunts() {
       )}
 
       <KeyboardContainer input={input} setInput={setInput} />
-    </>
+    </div>
   );
 }
 
