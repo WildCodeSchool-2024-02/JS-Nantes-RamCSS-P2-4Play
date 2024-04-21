@@ -1,3 +1,17 @@
+// function emptyCoiffeur(solution) {
+//   //   const length = insult.slang.length;
+//   //   const arr = new Array(length).fill("-").join();
+//   //     return arr;
+
+//   return new Array(solution.nom.length).fill("-").join("");
+// }
+
+// function MotifGame({ solution }) {
+//   return <></>;
+// }
+
+// export default MotifGame;
+
 // import { useEffect } from "react";
 // import useMotif from "./useMotif";
 // import Grid from "./Grid";
