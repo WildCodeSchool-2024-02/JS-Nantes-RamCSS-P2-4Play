@@ -7,6 +7,14 @@ function Motif() {
   const [solution, setSolution] = useState("");
   const [input, setInput] = useState("");
 
+  // Listenning to keyboard
+  function handleKeyPress(event) {
+    const keyPressed = event.key.toUpperCase();
+    if (input.length < 10) {
+      setInput((prevInput) => prevInput + keyPressed);
+    }
+  }
+
   useEffect(() => {
     fetch(
       "https://my-json-server.typicode.com/florine-vnt/words-api/coiffeurs-10"
@@ -19,12 +27,6 @@ function Motif() {
         // console.log(randomSolution.nom);
       });
   }, [setSolution]);
-
-  // Listenning to keyboard
-  function handleKeyPress(event) {
-    const keyPressed = event.key.toUpperCase();
-    setInput((prevInput) => prevInput + keyPressed);
-  }
 
   useEffect(() => {
     document.addEventListener("keypress", handleKeyPress);
