@@ -20,6 +20,20 @@ function Motif() {
       });
   }, [setSolution]);
 
+  // Listenning to keyboard
+  function handleKeyPress(event) {
+    const keyPressed = event.key.toUpperCase();
+    setInput((prevInput) => prevInput + keyPressed);
+  }
+
+  useEffect(() => {
+    document.addEventListener("keypress", handleKeyPress);
+
+    return () => {
+      document.removeEventListener("keypress", handleKeyPress);
+    };
+  }, [handleKeyPress]);
+
   return (
     <section className="motif-game">
       <header>
@@ -88,8 +102,7 @@ function Motif() {
         <div>.</div>
         <div>.</div>
       </div>
-      {solution}
-      <MotifGame solution={solution} />
+      <MotifGame solution={solution} input={input} />
       <KeyboardContainer input={input} setInput={setInput} />
     </section>
   );

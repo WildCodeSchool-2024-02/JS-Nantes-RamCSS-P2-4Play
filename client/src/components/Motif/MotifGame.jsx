@@ -1,16 +1,13 @@
-// function emptyCoiffeur(solution) {
-//   //   const length = insult.slang.length;
-//   //   const arr = new Array(length).fill("-").join();
-//   //     return arr;
+function MotifGame({ solution, input }) {
+  return (
+    <div>
+      <div>{solution}</div>
+      <div>{input}</div>
+    </div>
+  );
+}
 
-//   return new Array(solution.nom.length).fill("-").join("");
-// }
-
-// function MotifGame({ solution }) {
-//   return <></>;
-// }
-
-// export default MotifGame;
+export default MotifGame;
 
 // import { useEffect } from "react";
 // import useMotif from "./useMotif";
