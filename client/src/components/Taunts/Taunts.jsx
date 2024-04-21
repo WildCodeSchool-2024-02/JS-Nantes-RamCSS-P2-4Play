@@ -27,7 +27,7 @@ function Taunts() {
   }, []);
 
   return (
-    <div className="tauntsgame">
+    <div className="taunts">
       <h1>Twisted Taunts</h1>
       {!insult ? (
         <div>Loading</div>

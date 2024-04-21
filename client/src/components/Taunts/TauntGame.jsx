@@ -49,21 +49,21 @@ function TauntGame({ insult, input }) {
 
     if (!answer.includes("-")) {
       if (answer === insult.slang.toUpperCase()) {
-        setEndMessage("You Win");
+        setEndMessage("YOU WIN!");
       } else {
-        setEndMessage("YOU SUCK");
+        setEndMessage("YOU SUCK!");
       }
       setGameOver(true);
     }
   }, [input, answer, insult.slang]);
 
   return (
-    <>
-      <h1>{anagram.toUpperCase()}</h1>
-      <h1>{answer}</h1>
-      <div>{input}</div>
+    <div className="tauntgame">
+      <h2>{anagram.toUpperCase()}</h2>
+      <h2>{answer}</h2>
+      {/* <div>{input}</div> */}
       {gameOver ? <EndMessage endMessage={endMessage} insult={insult} /> : null}
-    </>
+    </div>
   );
 }
 

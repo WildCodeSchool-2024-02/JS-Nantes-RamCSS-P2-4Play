@@ -3,9 +3,9 @@ import GameOver from "./GameOver";
 
 function EndMessage({ endMessage, insult }) {
   return (
-    <>
+    <div className="endmessage">
       <div>{endMessage}</div>
-      {endMessage === "You Win" ? (
+      {endMessage === "YOU WIN!" ? (
         <div>
           YOU'RE SMARTER THAN YOU LOOK!{" "}
           <Confetti
@@ -33,7 +33,7 @@ function EndMessage({ endMessage, insult }) {
       <div> {insult.slang}</div>
       <div>{insult.def_fr}</div>
       <div>{insult.def_en} </div>
-    </>
+    </div>
   );
 }
 
