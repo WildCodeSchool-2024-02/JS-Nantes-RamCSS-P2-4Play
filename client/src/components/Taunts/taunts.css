@@ -16,7 +16,7 @@
   font-family: "Grandstander";
   font-size: 2rem;
 }
-.endmessagewin {
+.endmessage {
   max-width: 800px;
   display: flex;
   flex-direction: column;
