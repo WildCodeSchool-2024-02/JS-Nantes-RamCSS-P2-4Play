@@ -6,6 +6,7 @@ import "./taunts.css";
 function Taunts() {
   const [input, setInput] = useState("");
   const [insult, setInsult] = useState(null);
+  const [gameOver, setGameOver] = useState(false);
 
   async function getInsult() {
     const baseURL =
@@ -32,10 +33,17 @@ function Taunts() {
       {!insult ? (
         <div>Loading</div>
       ) : (
-        <TauntGame insult={insult} input={input} />
+        <TauntGame
+          insult={insult}
+          input={input}
+          gameOver={gameOver}
+          setGameOver={setGameOver}
+        />
       )}
 
-      <KeyboardContainer input={input} setInput={setInput} />
+      {!gameOver ? (
+        <KeyboardContainer input={input} setInput={setInput} />
+      ) : null}
     </div>
   );
 }

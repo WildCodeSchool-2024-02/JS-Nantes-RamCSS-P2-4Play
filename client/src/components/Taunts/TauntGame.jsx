@@ -18,7 +18,11 @@ function scrambledInsult(insult) {
   }
 
   const anagramInsult = arr.join(""); // Convert Array to string
-  return anagramInsult;
+  if (anagramInsult !== insult.slang) {
+    return anagramInsult;
+  }
+  // no need for else as return ends scrambledInsult function
+  return scrambledInsult(insult);
 }
 
 function emptyAnswer(insult) {
@@ -28,13 +32,12 @@ function emptyAnswer(insult) {
 
   return new Array(insult.slang.length).fill("-").join("");
 }
-function TauntGame({ insult, input }) {
+function TauntGame({ insult, input, gameOver, setGameOver }) {
   // eslint-disable-next-line no-unused-vars
   const [anagram, setAnagram] = useState(scrambledInsult(insult));
 
   const [answer, setAnswer] = useState(emptyAnswer(insult));
   const [endMessage, setEndMessage] = useState("");
-  const [gameOver, setGameOver] = useState(false);
 
   useEffect(() => {
     //  make input appear in empty answer here using setAnswer add logic to stop extra chars.
@@ -55,14 +58,18 @@ function TauntGame({ insult, input }) {
       }
       setGameOver(true);
     }
-  }, [input, answer, insult.slang]);
+  }, [input, answer, insult.slang, setGameOver]);
 
   return (
     <div className="tauntgame">
-      <h2>{anagram.toUpperCase()}</h2>
-      <h2>{answer}</h2>
-      {/* <div>{input}</div> */}
-      {gameOver ? <EndMessage endMessage={endMessage} insult={insult} /> : null}
+      {gameOver ? (
+        <EndMessage endMessage={endMessage} insult={insult} />
+      ) : (
+        <>
+          <h2>{anagram.toUpperCase()}</h2>
+          <h2>{answer}</h2>
+        </>
+      )}
     </div>
   );
 }

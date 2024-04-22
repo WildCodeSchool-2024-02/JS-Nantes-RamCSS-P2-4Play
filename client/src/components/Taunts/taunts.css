@@ -20,10 +20,14 @@
   max-width: 800px;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
   margin: 0 auto;
   align-items: center;
   color: #2cbfe2;
   font-family: "Grandstander";
-  font-size: 1.5rem;
+  text-align: center;
+  font-size: 2rem;
+}
+.gameover {
+  font-size: 3rem;
 }
