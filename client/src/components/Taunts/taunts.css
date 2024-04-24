@@ -31,3 +31,6 @@
 .gameover {
   font-size: 3rem;
 }
+.game-over-kb {
+  display: none;
+}

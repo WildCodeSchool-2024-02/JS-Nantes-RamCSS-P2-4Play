@@ -40,7 +40,9 @@ function TauntGame({ insult, input, gameOver, setGameOver }) {
   const [endMessage, setEndMessage] = useState("");
 
   useEffect(() => {
+    // console.warn(input, answer, insult.slang, setGameOver, gameOver);
     //  make input appear in empty answer here using setAnswer add logic to stop extra chars.
+    if (gameOver) return;
     if (input.length <= answer.length) {
       const latestInputLetter = input[input.length - 1];
       const answerArray = answer.split("");
@@ -58,7 +60,7 @@ function TauntGame({ insult, input, gameOver, setGameOver }) {
       }
       setGameOver(true);
     }
-  }, [input, answer, insult.slang, setGameOver]);
+  }, [input, answer, insult.slang, setGameOver, gameOver]);
 
   return (
     <div className="tauntgame">
@@ -75,9 +77,9 @@ function TauntGame({ insult, input, gameOver, setGameOver }) {
 }
 
 export default TauntGame;
-//  react confetti boom
-// TODO add in two modals - one win, one lose
-// win - affiche two defns deblock timed confetti
-// lose - affiche meassage saying that you're crap
+//  add spinner
+//  sort out infinite loop.
+//
+//
 //  add a timer to restart the game once over,
 // fetch the next word.

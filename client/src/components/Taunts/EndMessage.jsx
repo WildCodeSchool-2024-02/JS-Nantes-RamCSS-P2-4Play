@@ -1,18 +1,18 @@
-import { useRef } from "react";
+// import { useRef } from "react";
 import Confetti from "react-confetti-boom";
 import GameOver from "./GameOver";
 
 function EndMessage({ endMessage, insult }) {
-  const confettiRef = useRef(false);
+  // const confettiRef = useRef(false);
   return (
     <div className="endmessage">
       <div>{endMessage}</div>
       {endMessage === "YOU WIN!" ? (
         <>
           <div>YOU'RE SMARTER THAN YOU LOOK! </div>
-
+          {/*  react confetti explosion */}
           <Confetti
-            ref={confettiRef}
+            // ref={confettiRef}
             mode="fall"
             x={0.5}
             y={0}

@@ -8,6 +8,11 @@ function Taunts() {
   const [insult, setInsult] = useState(null);
   const [gameOver, setGameOver] = useState(false);
 
+  function getKeyboardClass() {
+    if (gameOver) return "game-over-kb";
+    return "";
+  }
+
   async function getInsult() {
     const baseURL =
       "https://my-json-server.typicode.com/brewost/words-api/insults";
@@ -41,9 +46,16 @@ function Taunts() {
         />
       )}
 
-      {!gameOver ? (
+      {/* {!gameOver ? (
+        <KeyboardContainer
+          input={input}
+          setInput={setInput}
+          gameOver={gameOver}
+        />
+      ) : null} */}
+      <div className={getKeyboardClass()}>
         <KeyboardContainer input={input} setInput={setInput} />
-      ) : null}
+      </div>
     </div>
   );
 }
