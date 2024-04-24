@@ -28,7 +28,7 @@
 
 .grille-jeux {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(10, 1fr);
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   padding: 10px;
 }
@@ -38,6 +38,8 @@
   border-color: #ffb703;
   padding: 5px;
   background-color: white;
+  width: 2rem;
+  height: 2rem;
 }
 
 .grille-jeux > .first-letter {

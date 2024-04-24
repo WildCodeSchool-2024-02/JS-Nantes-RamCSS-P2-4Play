@@ -1,23 +1,9 @@
-// import { useEffect } from "react";
-// import useMotif from "./useMotif";
-// import Grid from "./Grid";
+function MotifGame({ solution }) {
+  return (
+    <div>
+      <div>{solution}</div>
+    </div>
+  );
+}
 
-// function MotifGame({ solution }) {
-//   const { currentGuess, guesses, turn, isCorrect, handleKeyup } =
-//     useMotif(solution);
-
-//   useEffect(() => {
-//     window.addEventListener("keyup", handleKeyup);
-
-//     return () => window.removeEventListener("keyup", handleKeyup);
-//   }, [handleKeyup]);
-
-//   return (
-//     <div>
-//       <div>Current Guess - {currentGuess}</div>
-//       {/* <Grid guesses={guesses} currentGuess={currentGuess} turn={turn} /> */}
-//     </div>
-//   );
-// }
-
-// export default MotifGame;
+export default MotifGame;
