@@ -1,9 +1,7 @@
-// import { useRef } from "react";
 import Confetti from "react-confetti-boom";
 import GameOver from "./GameOver";
 
 function EndMessage({ endMessage, insult }) {
-  // const confettiRef = useRef(false);
   return (
     <div className="endmessage">
       <div>{endMessage}</div>
@@ -15,8 +13,8 @@ function EndMessage({ endMessage, insult }) {
             // ref={confettiRef}
             mode="fall"
             x={0.5}
-            y={0}
-            particleCount={50}
+            y={0.5}
+            particleCount={100}
             deg={270}
             shapeSize={18}
             spreadDeg={45}
@@ -34,6 +32,9 @@ function EndMessage({ endMessage, insult }) {
       <div>{insult.slang}</div>
       <div>{insult.def_fr}</div>
       <div>{insult.def_en} </div>
+      <a href="http://localhost:3000/taunts">
+        <button type="button">GO!</button>
+      </a>
     </div>
   );
 }
