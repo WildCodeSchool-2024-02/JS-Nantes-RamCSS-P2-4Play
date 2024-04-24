@@ -14,14 +14,20 @@ import { KeyboardReact as Keyboard } from "react-simple-keyboard";
 import "react-simple-keyboard/build/css/index.css";
 import "./KeyboardContainer.css";
 
-function KeyboardContainer({ input, setInput }) {
+function KeyboardContainer({ input, setInput, limit = null }) {
   // State has been lifted up to parent game components
   // const [input, setInput] = useState("");
   const [layout, setLayout] = useState("default");
   const keyboard = useRef();
 
   const onChange = (changeInput) => {
-    setInput(changeInput);
+    if(limit) {
+      if(changeInput.length <= limit) {
+        setInput(changeInput.toUpperCase());
+      }
+    } else {
+      setInput(changeInput);
+    }
     // console.log("Input changed", input);
   };
 

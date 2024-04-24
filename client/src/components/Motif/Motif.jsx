@@ -6,14 +6,22 @@ import MotifGame from "./MotifGame";
 function Motif() {
   const [solution, setSolution] = useState("");
   const [input, setInput] = useState("");
+  const [feedbackColors, setFeedbackColors] = useState(Array(10).fill(""));
+  // console.log(input);
 
-  // Listenning to keyboard
-  function handleKeyPress(event) {
-    const keyPressed = event.key.toUpperCase();
-    if (input.length < 10) {
-      setInput((prevInput) => prevInput + keyPressed);
-    }
+  // gereration of array with 10 empty elements
+  const rowTemp = [];
+  for (let i = 0; i < 10; i += 1) {
+    rowTemp.push("");
   }
+  const [row, setRow] = useState(rowTemp);
+
+  // function handleKeyPress(event) {
+    // const keyPressed = event.key.toUpperCase();
+    // if (input.length < 10) {
+    //   setInput((prevInput) => prevInput + keyPressed);
+    // }
+  // }
 
   useEffect(() => {
     fetch(
@@ -28,13 +36,41 @@ function Motif() {
       });
   }, [setSolution]);
 
-  useEffect(() => {
-    document.addEventListener("keypress", handleKeyPress);
+  // useEffect(() => {
+  //   document.addEventListener("keypress", handleKeyPress);
 
-    return () => {
-      document.removeEventListener("keypress", handleKeyPress);
-    };
-  }, [handleKeyPress]);
+  //   return () => {
+  //     document.removeEventListener("keypress", handleKeyPress);
+  //   };
+  // }, [handleKeyPress]);
+
+  useEffect(() => {
+    for (let i = 0; i < 10; i += 1) {
+      setRow((prevValue) => {
+        const copy = [...prevValue];
+        copy.splice(i, 1, input[i]);
+        return copy;
+      });
+    }
+  }, [input]);
+
+  // use colors to determine if letter is at the right place, or in the word, or isn't included
+  useEffect(() => {
+    const inputArray = input.split("");
+    const solutionArray = solution.split("");
+    if (inputArray.length === 10) {
+      const newFeedbackColors = inputArray.map((letter, index) => {
+        if (letter === solutionArray[index]) {
+          return "green";
+        } if (solutionArray.includes(letter)) {
+          return "orange";
+        }
+          return "gray";
+      });
+
+      setFeedbackColors(newFeedbackColors);
+    }
+  }, [input, solution]);
 
   return (
     <section className="motif-game">
@@ -43,69 +79,15 @@ function Motif() {
         <img src="./src/assets/images/thierry.png" alt="Thierry Beccaro" />
       </header>
       <div className="grille-jeux">
-        <div className="first-letter">L</div>
-        <div>.</div>
-        <div>.</div>
-        <div>I</div>
-        <div>.</div>
-        <div>.</div>
-        <div>H</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
+        {/* si histoire.length existe alors on rend la div histoire + on map une nouvelle row */}
+        {row.map((el, index) => (
+          <div key={(Math.random() * 1000)} style={{ backgroundColor: feedbackColors[index] }}>
+            {el}
+          </div>
+        ))}
       </div>
-      <MotifGame solution={solution} input={input} />
-      <KeyboardContainer input={input} setInput={setInput} />
+      <MotifGame solution={solution} />
+      <KeyboardContainer input={input} setInput={setInput} limit={10} />
     </section>
   );
 }
