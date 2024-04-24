@@ -18,7 +18,11 @@ function scrambledInsult(insult) {
   }
 
   const anagramInsult = arr.join(""); // Convert Array to string
-  return anagramInsult;
+  if (anagramInsult !== insult.slang) {
+    return anagramInsult;
+  }
+  // no need for else as return ends scrambledInsult function
+  return scrambledInsult(insult);
 }
 
 function emptyAnswer(insult) {
@@ -28,16 +32,17 @@ function emptyAnswer(insult) {
 
   return new Array(insult.slang.length).fill("-").join("");
 }
-function TauntGame({ insult, input }) {
+function TauntGame({ insult, input, gameOver, setGameOver }) {
   // eslint-disable-next-line no-unused-vars
   const [anagram, setAnagram] = useState(scrambledInsult(insult));
 
   const [answer, setAnswer] = useState(emptyAnswer(insult));
   const [endMessage, setEndMessage] = useState("");
-  const [gameOver, setGameOver] = useState(false);
 
   useEffect(() => {
+    // console.warn(input, answer, insult.slang, setGameOver, gameOver);
     //  make input appear in empty answer here using setAnswer add logic to stop extra chars.
+    if (gameOver) return;
     if (input.length <= answer.length) {
       const latestInputLetter = input[input.length - 1];
       const answerArray = answer.split("");
@@ -49,28 +54,32 @@ function TauntGame({ insult, input }) {
 
     if (!answer.includes("-")) {
       if (answer === insult.slang.toUpperCase()) {
-        setEndMessage("You Win");
+        setEndMessage("YOU WIN!");
       } else {
-        setEndMessage("YOU SUCK");
+        setEndMessage("YOU SUCK!");
       }
       setGameOver(true);
     }
-  }, [input, answer, insult.slang]);
+  }, [input, answer, insult.slang, setGameOver, gameOver]);
 
   return (
-    <>
-      <h1>{anagram.toUpperCase()}</h1>
-      <h1>{answer}</h1>
-      <div>{input}</div>
-      {gameOver ? <EndMessage endMessage={endMessage} insult={insult} /> : null}
-    </>
+    <div className="tauntgame">
+      {gameOver ? (
+        <EndMessage endMessage={endMessage} insult={insult} />
+      ) : (
+        <>
+          <h2>{anagram.toUpperCase()}</h2>
+          <h2>{answer}</h2>
+        </>
+      )}
+    </div>
   );
 }
 
 export default TauntGame;
-//  react confetti boom
-// TODO add in two modals - one win, one lose
-// win - affiche two defns deblock timed confetti
-// lose - affiche meassage saying that you're crap
+//  add spinner
+//  sort out infinite loop.
+//
+//
 //  add a timer to restart the game once over,
 // fetch the next word.

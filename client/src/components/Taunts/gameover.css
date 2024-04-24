@@ -1,0 +1,50 @@
+.gameover {
+  font-family: "Grandstander";
+  font-size: 5em;
+  text-align: center;
+  animation-name: example;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes example {
+  0% {
+    color: #219ebc;
+    text-shadow: 0 0 20px black;
+  }
+
+  25% {
+    color: #219ebc;
+    text-shadow: 2px 2px 2px black;
+    transform: translate(-2px, 1px);
+  }
+
+  40% {
+    color: #219ebc;
+    text-shadow: none;
+    transform: translate(0, 0);
+  }
+
+  50% {
+    color: #219ebc;
+    text-shadow: black -5px -5px 2px;
+    transform: translate(0px, 5px);
+  }
+
+  70% {
+    color: #219ebc;
+    text-shadow: none;
+    transform: translate(0, 0);
+  }
+
+  80% {
+    color: #219ebc;
+    text-shadow: 0 0 20px black;
+    transform: translate(-2px, 1px);
+  }
+
+  100% {
+    color: #219ebc;
+    text-shadow: none;
+  }
+}
