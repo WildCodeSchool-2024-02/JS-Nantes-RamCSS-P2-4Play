@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import KeyboardContainer from "../keyboard/KeyboardContainer";
 import "./motif.css";
+import ColorLegend from "./ColorLegend";
 import MotifGame from "./MotifGame";
+import KeyboardContainer from "../keyboard/KeyboardContainer";
 
 function Motif() {
   const [solution, setSolution] = useState("");
@@ -74,6 +75,7 @@ function Motif() {
           </div>
         ))}
       </div>
+      <ColorLegend />
       <MotifGame solution={solution} />
       <KeyboardContainer input={input} setInput={setInput} limit={10} />
     </section>
