@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import KeyboardContainer from "../keyboard/KeyboardContainer";
 import "./motif.css";
+import ColorLegend from "./ColorLegend";
 import MotifGame from "./MotifGame";
+import KeyboardContainer from "../keyboard/KeyboardContainer";
 
 function Motif() {
   const [solution, setSolution] = useState("");
@@ -46,16 +47,18 @@ function Motif() {
     if (inputArray.length === 10) {
       const newFeedbackColors = inputArray.map((letter, index) => {
         if (letter === solutionArray[index]) {
-          return "green";
+          return "#2cbfe2";
         } if (solutionArray.includes(letter)) {
-          return "orange";
+          return "#ffb703";
         }
-          return "gray";
+          return "white";
       });
 
       setFeedbackColors(newFeedbackColors);
     }
   }, [input, solution]);
+
+  // const historicArray = [];
 
   return (
     <section className="motif-game">
@@ -64,13 +67,15 @@ function Motif() {
         <img src="./src/assets/images/thierry.png" alt="Thierry Beccaro" />
       </header>
       <div className="grille-jeux">
-        {/* next step : si histoire.length existe alors on rend la div histoire + on map une nouvelle row */}
+       {/* historicArray.length > 0 ?  */}
+        {/* next step : si historic.length existe alors on rend la div historic + on map une nouvelle row */}
         {row.map((el, index) => (
           <div key={(Math.random() * 1000)} style={{ backgroundColor: feedbackColors[index] }}>
             {el}
           </div>
         ))}
       </div>
+      <ColorLegend />
       <MotifGame solution={solution} />
       <KeyboardContainer input={input} setInput={setInput} limit={10} />
     </section>
