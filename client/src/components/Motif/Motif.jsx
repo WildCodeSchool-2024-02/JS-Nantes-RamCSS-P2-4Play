@@ -16,13 +16,6 @@ function Motif() {
   }
   const [row, setRow] = useState(rowTemp);
 
-  // function handleKeyPress(event) {
-    // const keyPressed = event.key.toUpperCase();
-    // if (input.length < 10) {
-    //   setInput((prevInput) => prevInput + keyPressed);
-    // }
-  // }
-
   useEffect(() => {
     fetch(
       "https://my-json-server.typicode.com/florine-vnt/words-api/coiffeurs-10"
@@ -35,14 +28,6 @@ function Motif() {
         // console.log(randomSolution.nom);
       });
   }, [setSolution]);
-
-  // useEffect(() => {
-  //   document.addEventListener("keypress", handleKeyPress);
-
-  //   return () => {
-  //     document.removeEventListener("keypress", handleKeyPress);
-  //   };
-  // }, [handleKeyPress]);
 
   useEffect(() => {
     for (let i = 0; i < 10; i += 1) {
@@ -79,7 +64,7 @@ function Motif() {
         <img src="./src/assets/images/thierry.png" alt="Thierry Beccaro" />
       </header>
       <div className="grille-jeux">
-        {/* si histoire.length existe alors on rend la div histoire + on map une nouvelle row */}
+        {/* next step : si histoire.length existe alors on rend la div histoire + on map une nouvelle row */}
         {row.map((el, index) => (
           <div key={(Math.random() * 1000)} style={{ backgroundColor: feedbackColors[index] }}>
             {el}
