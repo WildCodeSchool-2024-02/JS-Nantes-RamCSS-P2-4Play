@@ -33,7 +33,9 @@ function EndMessage({ endMessage, insult }) {
       <div>{insult.def_fr}</div>
       <div>{insult.def_en} </div>
       <a href="http://localhost:3000/taunts">
-        <button type="button">GO!</button>
+        <button className="button" type="button">
+          RESET!
+        </button>
       </a>
     </div>
   );
