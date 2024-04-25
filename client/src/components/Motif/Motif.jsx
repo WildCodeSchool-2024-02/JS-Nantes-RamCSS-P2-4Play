@@ -7,15 +7,18 @@ import KeyboardContainer from "../keyboard/KeyboardContainer";
 function Motif() {
   const [solution, setSolution] = useState("");
   const [input, setInput] = useState("");
-  const [feedbackColors, setFeedbackColors] = useState(Array(10).fill(""));
-  // console.log(input);
+  // const [feedbackColors, setFeedbackColors] = useState(Array(10).fill(""));
+  const [historicArray, setHistoricArray] = useState([]);
 
   // gereration of array with 10 empty elements
-  const rowTemp = [];
-  for (let i = 0; i < 10; i += 1) {
-    rowTemp.push("");
+  function generateEmptyArray() {
+    const rowTemp = [];
+    for (let i = 0; i < 10; i += 1) {
+      rowTemp.push("");
+    }
+    return rowTemp;
   }
-  const [row, setRow] = useState(rowTemp);
+  const [row, setRow] = useState(generateEmptyArray());
 
   useEffect(() => {
     fetch(
@@ -30,6 +33,16 @@ function Motif() {
       });
   }, [setSolution]);
 
+  const validationWordColors = (lettre, index) => {
+    if (solution[index] === lettre) {
+      return "green";
+    }
+    if (solution.includes(lettre)) {
+      return "orange";
+    }
+    return "white";
+  };
+
   useEffect(() => {
     for (let i = 0; i < 10; i += 1) {
       setRow((prevValue) => {
@@ -38,27 +51,50 @@ function Motif() {
         return copy;
       });
     }
+
+    if (input.length === 10) {
+      const array = input.split("");
+      const arrayLettersWithStatus = array.map((l, index) => ({
+        lettre: l,
+        status: validationWordColors(l, index),
+      }));
+
+      setHistoricArray((currentValue) => [
+        ...currentValue,
+        ...arrayLettersWithStatus,
+      ]);
+      setRow(generateEmptyArray());
+      setInput("");
+    }
   }, [input]);
 
-  // use colors to determine if letter is at the right place, or in the word, or isn't included
-  useEffect(() => {
-    const inputArray = input.split("");
-    const solutionArray = solution.split("");
-    if (inputArray.length === 10) {
-      const newFeedbackColors = inputArray.map((letter, index) => {
-        if (letter === solutionArray[index]) {
-          return "#2cbfe2";
-        } if (solutionArray.includes(letter)) {
-          return "#ffb703";
-        }
-          return "white";
-      });
-
-      setFeedbackColors(newFeedbackColors);
+  const generateColor = (el) => {
+    if (el.status === "green") {
+      return "green";
     }
-  }, [input, solution]);
+    if (el.status === "orange") {
+      return "orange";
+    }
+    return "white";
+  };
+  // use colors to determine if letter is at the right place, or in the word, or isn't included
+  // useEffect(() => {
+  //   const inputArray = input.split("");
+  //   const solutionArray = solution.split("");
 
-  // const historicArray = [];
+  //   if (inputArray.length === 10) {
+  //     const newFeedbackColors = inputArray.map((letter, index) => {
+  //       if (letter === solutionArray[index]) {
+  //         return "#2cbfe2"; // blue color
+  //       }
+  //       if (solutionArray.includes(letter)) {
+  //         return "#ffb703"; // orange color
+  //       }
+  //       return "white";
+  //     });
+  //     setFeedbackColors(newFeedbackColors);
+  //   }
+  // }, [input, solution]);
 
   return (
     <section className="motif-game">
@@ -67,10 +103,23 @@ function Motif() {
         <img src="./src/assets/images/thierry.png" alt="Thierry Beccaro" />
       </header>
       <div className="grille-jeux">
-       {/* historicArray.length > 0 ?  */}
+        {historicArray.map((el) => (
+          <div
+            key={Math.random() * 1000}
+            style={{
+              backgroundColor: generateColor(el),
+            }}
+          >
+            {el.lettre}
+          </div>
+        ))}
+        {/* {historicArray.length > 0 ? historicArray : null } */}
         {/* next step : si historic.length existe alors on rend la div historic + on map une nouvelle row */}
-        {row.map((el, index) => (
-          <div key={(Math.random() * 1000)} style={{ backgroundColor: feedbackColors[index] }}>
+        {row.map((el) => (
+          <div
+            key={Math.random() * 1000}
+            // style={{ backgroundColor: feedbackColors[index] }}
+          >
             {el}
           </div>
         ))}

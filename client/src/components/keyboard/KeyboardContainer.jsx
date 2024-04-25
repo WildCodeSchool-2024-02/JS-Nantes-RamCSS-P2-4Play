@@ -21,14 +21,15 @@ function KeyboardContainer({ input, setInput, limit = null }) {
   const keyboard = useRef();
 
   const onChange = (changeInput) => {
-    if(limit) {
-      if(changeInput.length <= limit) {
-        setInput(changeInput.toUpperCase());
+    if (limit) {
+      if (changeInput.length !== limit) {
+        setInput(() => changeInput);
+      } else {
+        setInput(() => changeInput);
+        keyboard.current.setInput("");
       }
-    } else {
-      setInput(changeInput);
     }
-    // console.log("Input changed", input);
+    setInput(changeInput);
   };
 
   const handleShift = () => {
@@ -71,14 +72,14 @@ function KeyboardContainer({ input, setInput, limit = null }) {
           default: [
             "Q W E R T Y U I O P",
             "A S D F G H J K L",
-            "Z X C V B N M {backspace}",
-            "{space} {ent}",
+            "Z X C V B N M",
+            "{space}",
           ],
           shift: [
             "q w e r t y u i o p",
             "a s d f g h j k l",
-            "{shift} z x c v b n m {backspace}",
-            "{numbers} {space} {ent}",
+            "{shift} z x c v b n m",
+            "{numbers} {space}",
           ],
           numbers: ["1 2 3", "4 5 6", "7 8 9", "{abc} 0 {backspace}"],
         }}
