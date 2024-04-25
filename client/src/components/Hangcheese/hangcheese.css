@@ -50,10 +50,10 @@ h1 {
   background-color: #ffd700;
 }
 
-.cheeseWord {
+/*.cheeseWord {
   display: flex;
   gap: 0.25em;
   font-size: 6rem;
   font-weight: bold;
   text-transform: uppercase;
-}
+}*/
