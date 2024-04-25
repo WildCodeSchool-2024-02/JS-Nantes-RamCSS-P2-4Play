@@ -35,10 +35,10 @@ function Motif() {
 
   const validationWordColors = (lettre, index) => {
     if (solution[index] === lettre) {
-      return "green";
+      return "#2cbfe2"; // blue color
     }
     if (solution.includes(lettre)) {
-      return "orange";
+      return "#ffb703"; // orange color
     }
     return "white";
   };
@@ -69,11 +69,11 @@ function Motif() {
   }, [input]);
 
   const generateColor = (el) => {
-    if (el.status === "green") {
-      return "green";
+    if (el.status === "#2cbfe2") {
+      return "#2cbfe2"; // blue color
     }
-    if (el.status === "orange") {
-      return "orange";
+    if (el.status === "#ffb703") {
+      return "#ffb703"; // orange color
     }
     return "white";
   };
