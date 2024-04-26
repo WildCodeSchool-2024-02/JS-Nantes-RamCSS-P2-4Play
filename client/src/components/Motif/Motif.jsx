@@ -9,6 +9,8 @@ function Motif() {
   const [input, setInput] = useState("");
   // const [feedbackColors, setFeedbackColors] = useState(Array(10).fill(""));
   const [historicArray, setHistoricArray] = useState([]);
+  const [attempt, setAttempt] = useState(0);
+  // const [gameOver, setGameOver] = useState(false);
 
   // gereration of array with 10 empty elements
   function generateEmptyArray() {
@@ -37,7 +39,7 @@ function Motif() {
     if (solution[index] === lettre) {
       return "#2cbfe2"; // blue color
     }
-    if (solution.includes(lettre)) {
+    if (solution[index] !== lettre && solution.includes(lettre)) {
       return "#ffb703"; // orange color
     }
     return "white";
@@ -52,7 +54,7 @@ function Motif() {
       });
     }
 
-    if (input.length === 10) {
+    if (input.length === 10 && attempt < 5) {
       const array = input.split("");
       const arrayLettersWithStatus = array.map((l, index) => ({
         lettre: l,
@@ -65,8 +67,17 @@ function Motif() {
       ]);
       setRow(generateEmptyArray());
       setInput("");
+      setAttempt((prevCount) => prevCount + 1);
     }
-  }, [input]);
+  }, [input, attempt]);
+
+  // condition to end the game. Idea: put these lines in return & add a component EndMessage
+  if (
+    (input.length === 10 && attempt === 5) ||
+    (input.length === 10 && input === solution)
+  ) {
+    // console.log("game is over");
+  }
 
   const generateColor = (el) => {
     if (el.status === "#2cbfe2") {

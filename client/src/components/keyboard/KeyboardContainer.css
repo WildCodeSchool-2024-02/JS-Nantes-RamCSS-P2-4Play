@@ -8,6 +8,6 @@ input {
 }
 
 .simple-keyboard {
-  max-width: 850px;
+  width: 90vw;
   background-color: #219ebc;
 }
