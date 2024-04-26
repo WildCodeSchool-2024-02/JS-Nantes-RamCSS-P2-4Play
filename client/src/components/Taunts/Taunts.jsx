@@ -1,10 +1,18 @@
 import { useState, useEffect, useRef } from "react";
 import KeyboardContainer from "../keyboard/KeyboardContainer";
 import TauntGame from "./TauntGame";
+import FourSquareSpinner from "./FourSquareSpinner";
+import "./taunts.css";
 
 function Taunts() {
   const [input, setInput] = useState("");
   const [insult, setInsult] = useState(null);
+  const [gameOver, setGameOver] = useState(false);
+
+  function getKeyboardClass() {
+    if (gameOver) return "game-over-kb";
+    return "";
+  }
 
   async function getInsult() {
     const baseURL =
@@ -26,16 +34,30 @@ function Taunts() {
   }, []);
 
   return (
-    <>
+    <div className="taunts">
       <h1>Twisted Taunts</h1>
       {!insult ? (
-        <div>Loading</div>
+        <FourSquareSpinner />
       ) : (
-        <TauntGame insult={insult} input={input} />
+        <TauntGame
+          insult={insult}
+          input={input}
+          gameOver={gameOver}
+          setGameOver={setGameOver}
+        />
       )}
 
-      <KeyboardContainer input={input} setInput={setInput} />
-    </>
+      {/* {!gameOver ? (
+        <KeyboardContainer
+          input={input}
+          setInput={setInput}
+          gameOver={gameOver}
+        />
+      ) : null} */}
+      <div className={getKeyboardClass()}>
+        <KeyboardContainer input={input} setInput={setInput} />
+      </div>
+    </div>
   );
 }
 

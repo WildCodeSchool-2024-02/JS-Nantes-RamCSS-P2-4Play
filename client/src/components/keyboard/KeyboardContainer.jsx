@@ -14,15 +14,22 @@ import { KeyboardReact as Keyboard } from "react-simple-keyboard";
 import "react-simple-keyboard/build/css/index.css";
 import "./KeyboardContainer.css";
 
-function KeyboardContainer({ input, setInput }) {
+function KeyboardContainer({ input, setInput, limit = null }) {
   // State has been lifted up to parent game components
   // const [input, setInput] = useState("");
   const [layout, setLayout] = useState("default");
   const keyboard = useRef();
 
   const onChange = (changeInput) => {
+    if (limit) {
+      if (changeInput.length !== limit) {
+        setInput(() => changeInput);
+      } else {
+        setInput(() => changeInput);
+        keyboard.current.setInput("");
+      }
+    }
     setInput(changeInput);
-    // console.log("Input changed", input);
   };
 
   const handleShift = () => {
@@ -65,14 +72,14 @@ function KeyboardContainer({ input, setInput }) {
           default: [
             "Q W E R T Y U I O P",
             "A S D F G H J K L",
-            "{shift} Z X C V B N M {backspace}",
-            "{numbers} {space} {ent}",
+            "Z X C V B N M",
+            "{space}",
           ],
           shift: [
             "q w e r t y u i o p",
             "a s d f g h j k l",
-            "{shift} z x c v b n m {backspace}",
-            "{numbers} {space} {ent}",
+            "{shift} z x c v b n m",
+            "{numbers} {space}",
           ],
           numbers: ["1 2 3", "4 5 6", "7 8 9", "{abc} 0 {backspace}"],
         }}

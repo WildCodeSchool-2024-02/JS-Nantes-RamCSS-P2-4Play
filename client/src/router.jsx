@@ -28,10 +28,10 @@ const router = createBrowserRouter([
         path: "/motif",
         element: <Motif />,
       },
-      /* {
-        path: "/synaps",
-        element: <Synaps />,
-      }, */
+      // {
+      //   path: "/synaps",
+      //   element: <Synaps />,
+      // },
     ],
   },
 ]);

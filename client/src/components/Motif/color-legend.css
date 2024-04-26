@@ -1,0 +1,28 @@
+.legend {
+  display: flex;
+  flex-direction: column;
+  border: solid #ffb703;
+  border-radius: 5px;
+}
+
+.legend > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Grandstander";
+  color: black;
+  width: 120px;
+  height: 30px;
+}
+
+.good-place {
+  background-color: #2cbfe2;
+}
+
+.wrong-place {
+  background-color: #ffb703;
+}
+
+.not-included {
+  background-color: white;
+}
