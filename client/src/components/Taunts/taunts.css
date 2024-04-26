@@ -1,10 +1,11 @@
 .taunts {
-  max-width: 800px;
+  /* max-width: 800px; */
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   align-items: center;
+  justify-content: space-between;
 }
 .taunts > h1 {
   color: #2cbfe2;
@@ -29,7 +30,7 @@
   color: #2cbfe2;
   font-family: "Grandstander";
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   margin: 1rem;
 }
 .gameover {
@@ -57,16 +58,12 @@
   cursor: pointer;
   margin: 36px;
   box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.7);
-}
-
-.tauntsbutton {
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
 }
-
-.tauntsbutton:after {
+/* .tauntsbutton:after {
   content: "»";
   position: absolute;
   opacity: 0;
@@ -83,4 +80,4 @@
 .tauntsbutton:hover:after {
   opacity: 1;
   right: 10px;
-}
+} */
