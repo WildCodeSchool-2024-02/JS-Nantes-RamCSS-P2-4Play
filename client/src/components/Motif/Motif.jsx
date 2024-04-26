@@ -54,7 +54,7 @@ function Motif() {
       });
     }
 
-    if (input.length === 10 && attempt < 5) {
+    if (input.length === 10 && attempt <= 5) {
       const array = input.split("");
       const arrayLettersWithStatus = array.map((l, index) => ({
         lettre: l,
@@ -126,7 +126,7 @@ function Motif() {
         ))}
         {/* {historicArray.length > 0 ? historicArray : null } */}
         {/* next step : si historic.length existe alors on rend la div historic + on map une nouvelle row */}
-        {row.map((el) => (
+        {attempt <= 5 && row.map((el) => (
           <div
             key={Math.random() * 1000}
             // style={{ backgroundColor: feedbackColors[index] }}
