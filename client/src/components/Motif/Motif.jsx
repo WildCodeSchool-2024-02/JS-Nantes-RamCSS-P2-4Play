@@ -7,10 +7,8 @@ import KeyboardContainer from "../keyboard/KeyboardContainer";
 function Motif() {
   const [solution, setSolution] = useState("");
   const [input, setInput] = useState("");
-  // const [feedbackColors, setFeedbackColors] = useState(Array(10).fill(""));
   const [historicArray, setHistoricArray] = useState([]);
   const [attempt, setAttempt] = useState(0);
-  // const [gameOver, setGameOver] = useState(false);
 
   // gereration of array with 10 empty elements
   function generateEmptyArray() {
@@ -22,6 +20,7 @@ function Motif() {
   }
   const [row, setRow] = useState(generateEmptyArray());
 
+  // fetching the API
   useEffect(() => {
     fetch(
       "https://my-json-server.typicode.com/florine-vnt/words-api/coiffeurs-10"
@@ -31,10 +30,10 @@ function Motif() {
         // random a number between 0 & 29 (size of the array)
         const randomSolution = data[Math.floor(Math.random() * data.length)];
         setSolution(randomSolution.nom);
-        // console.log(randomSolution.nom);
       });
   }, [setSolution]);
 
+  // use colors to determine if letter is at the right place, or in the word, or isn't included
   const validationWordColors = (lettre, index) => {
     if (solution[index] === lettre) {
       return "#2cbfe2"; // blue color
@@ -45,6 +44,7 @@ function Motif() {
     return "white";
   };
 
+  // copy the input into the grid & check the colors once the row is complete
   useEffect(() => {
     for (let i = 0; i < 10; i += 1) {
       setRow((prevValue) => {
@@ -79,6 +79,7 @@ function Motif() {
     // console.log("game is over");
   }
 
+  // add the color generated to the status
   const generateColor = (el) => {
     if (el.status === "#2cbfe2") {
       return "#2cbfe2"; // blue color
@@ -88,24 +89,6 @@ function Motif() {
     }
     return "white";
   };
-  // use colors to determine if letter is at the right place, or in the word, or isn't included
-  // useEffect(() => {
-  //   const inputArray = input.split("");
-  //   const solutionArray = solution.split("");
-
-  //   if (inputArray.length === 10) {
-  //     const newFeedbackColors = inputArray.map((letter, index) => {
-  //       if (letter === solutionArray[index]) {
-  //         return "#2cbfe2"; // blue color
-  //       }
-  //       if (solutionArray.includes(letter)) {
-  //         return "#ffb703"; // orange color
-  //       }
-  //       return "white";
-  //     });
-  //     setFeedbackColors(newFeedbackColors);
-  //   }
-  // }, [input, solution]);
 
   return (
     <section className="motif-game">
@@ -124,13 +107,8 @@ function Motif() {
             {el.lettre}
           </div>
         ))}
-        {/* {historicArray.length > 0 ? historicArray : null } */}
-        {/* next step : si historic.length existe alors on rend la div historic + on map une nouvelle row */}
         {attempt <= 5 && row.map((el) => (
-          <div
-            key={Math.random() * 1000}
-            // style={{ backgroundColor: feedbackColors[index] }}
-          >
+          <div key={Math.random() * 1000}>
             {el}
           </div>
         ))}
