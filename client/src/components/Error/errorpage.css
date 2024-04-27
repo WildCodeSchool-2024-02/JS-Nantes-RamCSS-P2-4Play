@@ -1,0 +1,18 @@
+.errorpage > h1 {
+  color: #2cbfe2;
+  font-family: "Grandstander";
+  font-size: 4.5rem;
+  margin-top: 1rem;
+  position: fixed;
+  top: 30%;
+  width: 100%;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .errorpage > h1 {
+    font-size: 6rem;
+    position: fixed;
+    top: 40%;
+  }
+}
