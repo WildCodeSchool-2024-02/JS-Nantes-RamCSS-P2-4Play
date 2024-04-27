@@ -5,7 +5,7 @@ import HangCheese from "./components/Hangcheese/HangCheese";
 import Taunts from "./components/Taunts/Taunts";
 import Motif from "./components/Motif/Motif";
 // import Synaps from "./components/Synaps/Synaps";
-import ErrorPage from "./components/Error/ErrorPage";
+import ErrorPage from "./components/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {

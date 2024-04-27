@@ -27,7 +27,7 @@ function EndMessage({ endMessage, insult }) {
         </div>
       )}
 
-      <div>{insult.slang}</div>
+      <div className="endanswer">{insult.slang.toUpperCase()}</div>
       <div>{insult.def_fr}</div>
       <div>{insult.def_en} </div>
       <a href="http://localhost:3000/taunts">

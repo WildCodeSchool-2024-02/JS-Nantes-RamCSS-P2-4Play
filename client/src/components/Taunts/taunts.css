@@ -16,6 +16,7 @@
   font-family: "Grandstander";
   font-size: 2rem;
   padding: 1rem;
+  letter-spacing: 0.6rem;
 }
 .endmessage {
   max-width: 800px;
@@ -36,6 +37,10 @@
 }
 .game-over-kb {
   display: none;
+}
+.endanswer {
+  font-weight: bold;
+  font-size: 2.5rem;
 }
 .tauntsbutton {
   background-color: #ffb703;
@@ -70,6 +75,7 @@
   }
   .tauntgame > h2 {
     font-size: 4rem;
+    letter-spacing: 1rem;
   }
   .endmessage {
     gap: 2.5rem;
@@ -80,6 +86,9 @@
   }
   .gameover {
     font-size: 5rem;
+  }
+  .endanswer {
+    font-size: 4rem;
   }
 
   .tauntsbutton {
