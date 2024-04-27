@@ -107,11 +107,8 @@ function Motif() {
             {el.lettre}
           </div>
         ))}
-        {attempt <= 5 && row.map((el) => (
-          <div key={Math.random() * 1000}>
-            {el}
-          </div>
-        ))}
+        {attempt <= 5 &&
+          row.map((el) => <div key={Math.random() * 1000}>{el}</div>)}
       </div>
       <ColorLegend />
       <MotifGame solution={solution} />
