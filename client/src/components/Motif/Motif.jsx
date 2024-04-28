@@ -83,8 +83,6 @@ function Motif() {
           ...currentValue,
           ...arrayLettersWithStatus,
         ]);
-        setInput("");
-        setAttempt((prevCount) => prevCount + 1);
       }
     }
   }, [input, attempt, solution]);
@@ -129,7 +127,7 @@ function Motif() {
                 {el.lettre}
               </div>
             ))}
-            {attempt <= 5 &&
+            {input !== solution && attempt <= 5 &&
               row.map((el) => <div key={Math.random() * 1000}>{el}</div>)}
           </section>
           <ColorLegend />
