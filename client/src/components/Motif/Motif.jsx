@@ -4,14 +4,14 @@ import ColorLegend from "./ColorLegend";
 import MotifGame from "./MotifGame";
 import KeyboardContainer from "../keyboard/KeyboardContainer";
 import FourSquareSpinner from "./FourSquareSpinner";
-// import EndMessage from "./EndMessage";
+import EndMessage from "./EndMessage";
 
 function Motif() {
   const [solution, setSolution] = useState("");
   const [input, setInput] = useState("");
   const [historicArray, setHistoricArray] = useState([]);
   const [attempt, setAttempt] = useState(0);
-  // const [endMessage, setEndMessage] = useState("");
+  const [endMessage, setEndMessage] = useState("");
 
   // gereration of array with 10 empty elements
   function generateEmptyArray() {
@@ -85,15 +85,17 @@ function Motif() {
         ]);
       }
     }
+
+    // Win/Lose condition
+    if (input.length === 10 && input === solution){
+      setEndMessage("YOU WIN")
+    }
+
+    if (input.length === 10 && attempt === 5 && input !== solution){
+      setEndMessage("YOU LOSE")
+    }
   }, [input, attempt, solution]);
 
-  // condition to end the game. Idea: put these lines in return & add a component EndMessage
-  if (
-    (input.length === 10 && attempt === 5) ||
-    (input.length === 10 && input === solution)
-  ) {
-    // console.log("game is over");
-  }
 
   // add the color generated to the status
   const generateColor = (el) => {
@@ -127,8 +129,13 @@ function Motif() {
                 {el.lettre}
               </div>
             ))}
-            {input !== solution && attempt <= 5 &&
+            {input !== solution &&
+              attempt <= 5 &&
               row.map((el) => <div key={Math.random() * 1000}>{el}</div>)}
+            {(input.length === 10 && attempt === 5 && input !== solution) ||
+            (input.length === 10 && input === solution)
+              ? <EndMessage endMessage={endMessage}/>
+              : null}
           </section>
           <ColorLegend />
           <MotifGame solution={solution} />
