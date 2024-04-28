@@ -4,12 +4,14 @@ import ColorLegend from "./ColorLegend";
 import MotifGame from "./MotifGame";
 import KeyboardContainer from "../keyboard/KeyboardContainer";
 import FourSquareSpinner from "./FourSquareSpinner";
+// import EndMessage from "./EndMessage";
 
 function Motif() {
   const [solution, setSolution] = useState("");
   const [input, setInput] = useState("");
   const [historicArray, setHistoricArray] = useState([]);
   const [attempt, setAttempt] = useState(0);
+  // const [endMessage, setEndMessage] = useState("");
 
   // gereration of array with 10 empty elements
   function generateEmptyArray() {
@@ -56,21 +58,36 @@ function Motif() {
     }
 
     if (input.length === 10 && attempt <= 5) {
-      const array = input.split("");
-      const arrayLettersWithStatus = array.map((l, index) => ({
-        lettre: l,
-        status: validationWordColors(l, index),
-      }));
+      if (input !== solution) {
+        const array = input.split("");
+        const arrayLettersWithStatus = array.map((l, index) => ({
+          lettre: l,
+          status: validationWordColors(l, index),
+        }));
 
-      setHistoricArray((currentValue) => [
-        ...currentValue,
-        ...arrayLettersWithStatus,
-      ]);
-      setRow(generateEmptyArray());
-      setInput("");
-      setAttempt((prevCount) => prevCount + 1);
+        setHistoricArray((currentValue) => [
+          ...currentValue,
+          ...arrayLettersWithStatus,
+        ]);
+        setRow(generateEmptyArray());
+        setInput("");
+        setAttempt((prevCount) => prevCount + 1);
+      } else {
+        // check colors when solution = input
+        const arrayLettersWithStatus = solution.split("").map((l, index) => ({
+          lettre: l,
+          status: validationWordColors(l, index),
+        }));
+
+        setHistoricArray((currentValue) => [
+          ...currentValue,
+          ...arrayLettersWithStatus,
+        ]);
+        setInput("");
+        setAttempt((prevCount) => prevCount + 1);
+      }
     }
-  }, [input, attempt]);
+  }, [input, attempt, solution]);
 
   // condition to end the game. Idea: put these lines in return & add a component EndMessage
   if (
@@ -97,25 +114,28 @@ function Motif() {
         <h3>Mo'tif</h3>
         <img src="./src/assets/images/thierry.png" alt="Thierry Beccaro" />
       </header>
-      {!solution ? (<FourSquareSpinner />) :
-      <div className="body-game">
-      <section className="grille-jeux">
-        {historicArray.map((el) => (
-          <div
-            key={Math.random() * 1000}
-            style={{
-              backgroundColor: generateColor(el),
-            }}
-          >
-            {el.lettre}
-          </div>
-        ))}
-        {attempt <= 5 &&
-          row.map((el) => <div key={Math.random() * 1000}>{el}</div>)}
-      </section> 
-      <ColorLegend /> 
-      <MotifGame solution={solution} />
-      </div> }
+      {!solution ? (
+        <FourSquareSpinner />
+      ) : (
+        <div className="body-game">
+          <section className="grille-jeux">
+            {historicArray.map((el) => (
+              <div
+                key={Math.random() * 1000}
+                style={{
+                  backgroundColor: generateColor(el),
+                }}
+              >
+                {el.lettre}
+              </div>
+            ))}
+            {attempt <= 5 &&
+              row.map((el) => <div key={Math.random() * 1000}>{el}</div>)}
+          </section>
+          <ColorLegend />
+          <MotifGame solution={solution} />
+        </div>
+      )}
       <KeyboardContainer input={input} setInput={setInput} limit={10} />
     </section>
   );
