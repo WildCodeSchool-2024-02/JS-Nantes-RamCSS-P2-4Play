@@ -5,7 +5,7 @@
   justify-content: space-between;
   text-align: center;
   padding: 1rem;
-  gap: 10px;
+  gap: 0.625rem;
 }
 
 .motif-game > header {
@@ -31,20 +31,23 @@
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(6, 1fr);
-  padding: 10px;
+  padding: 0.625px;
 }
 
 .grille-jeux > div {
   border: solid;
   border-color: #ffb703;
-  padding: 5px;
+  padding: 0.3rem;
   background-color: white;
   width: 2rem;
   height: 2rem;
+  font-family: "Grandstander";
 }
 
-.grille-jeux > .first-letter {
-  background-color: red;
+.text-attempt {
+  color: #2cbfe2;
+  font-family: "Grandstander";
+  font-size: 1.5rem;
 }
 
 .motif-game-over {
