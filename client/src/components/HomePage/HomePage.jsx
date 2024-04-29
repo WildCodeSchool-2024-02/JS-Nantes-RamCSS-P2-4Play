@@ -18,7 +18,7 @@ const gameItems = [
   {
     title: "Mo'tif",
     description: "Le jeu qui va vous rendre addic'tif",
-    image: "./src/assets/images/motif_img.png",
+    image: "./src/assets/images/thierry.png",
     link: "/motif",
   },
   {
