@@ -29,7 +29,10 @@ function Synaps() {
       const gridSize = 10;
       const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       const newGrid = Array.from({ length: gridSize }, () =>
-        Array.from({ length: gridSize }, () => letters[Math.floor(Math.random() * letters.length)])
+        Array.from(
+          { length: gridSize },
+          () => letters[Math.floor(Math.random() * letters.length)]
+        )
       );
 
       words.forEach((word) => {
@@ -59,7 +62,9 @@ function Synaps() {
   const handleClick = (indexRow, indexCol) => {
     const letter = grid[indexRow][indexCol];
     const newSelectedLetters = [...selectedLetters];
-    const letterIndex = newSelectedLetters.findIndex((item) => item.x === indexRow && item.y === indexCol);
+    const letterIndex = newSelectedLetters.findIndex(
+      (item) => item.x === indexRow && item.y === indexCol
+    );
     if (letterIndex !== -1) {
       // Si la lettre est déjà sélectionnée, la supprimer de la liste des lettres sélectionnées
       newSelectedLetters.splice(letterIndex, 1);
@@ -81,7 +86,9 @@ function Synaps() {
               {grid.map((row, indexRow) => (
                 <tr key={Math.random() * 1000}>
                   {row.map((letter, indexCol) => {
-                    const isSelected = selectedLetters.some((item) => item.x === indexRow && item.y === indexCol);
+                    const isSelected = selectedLetters.some(
+                      (item) => item.x === indexRow && item.y === indexCol
+                    );
                     return (
                       <td
                         key={Math.random() * 1000}

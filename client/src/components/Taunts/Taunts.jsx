@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import KeyboardContainer from "../keyboard/KeyboardContainer";
 import TauntGame from "./TauntGame";
-import FourSquareSpinner from "./FourSquareSpinner";
+import FourSquareSpinner from "../Spinner/FourSquareSpinner";
 import "./taunts.css";
 
 function Taunts() {
