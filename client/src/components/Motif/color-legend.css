@@ -1,6 +1,5 @@
 .legend {
-  display: flex;
-  flex-direction: column;
+  display: inline-block;
   border: solid #ffb703;
   border-radius: 5px;
 }

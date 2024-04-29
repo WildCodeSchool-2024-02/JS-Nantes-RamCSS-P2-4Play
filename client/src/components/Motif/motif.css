@@ -5,6 +5,7 @@
   justify-content: space-between;
   text-align: center;
   padding: 1rem;
+  gap: 10px;
 }
 
 .motif-game > header {
@@ -44,4 +45,8 @@
 
 .grille-jeux > .first-letter {
   background-color: red;
+}
+
+.motif-game-over {
+  display: none;
 }

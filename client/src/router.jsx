@@ -4,13 +4,14 @@ import HomePage from "./components/HomePage/HomePage";
 import HangCheese from "./components/Hangcheese/HangCheese";
 import Taunts from "./components/Taunts/Taunts";
 import Motif from "./components/Motif/Motif";
-// import Synaps from "./components/Synaps/Synaps";
+import Synaps from "./components/Synaps/Synaps";
+import ErrorPage from "./components/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <h1>u done fucked it up</h1>,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "",
@@ -28,10 +29,10 @@ const router = createBrowserRouter([
         path: "/motif",
         element: <Motif />,
       },
-      // {
-      //   path: "/synaps",
-      //   element: <Synaps />,
-      // },
+      {
+        path: "/synaps",
+        element: <Synaps />,
+      },
     ],
   },
 ]);

@@ -1,13 +1,15 @@
 import Confetti from "react-confetti-boom";
 import GameOver from "./GameOver";
+import "./endmessage.css";
 
-function EndMessage({ endMessage, insult }) {
+function EndMessage({ endMessage, solution }) {
   return (
-    <div className="endmessage">
-      <div>{endMessage}</div>
-      {endMessage === "YOU WIN!" ? (
+    <div className="motif-endmessage">
+      {endMessage === "YOU WIN" ? (
         <>
-          <div>YOU'RE SMARTER THAN YOU LOOK! </div>
+          <div className="well-done-message">
+            <p>Bravo, tu as démêlé cette énigme avec succès !</p>
+          </div>
           <Confetti
             mode="boom"
             x={0.5}
@@ -22,17 +24,15 @@ function EndMessage({ endMessage, insult }) {
           />
         </>
       ) : (
-        <div className="gameover">
+        <div className="motif-gameover">
           <GameOver />
         </div>
       )}
 
-      <div className="endanswer">{insult.slang.toUpperCase()}</div>
-      <div>{insult.def_fr}</div>
-      <div>{insult.def_en} </div>
-      <a href="http://localhost:3000/taunts">
-        <button className="tauntsbutton" type="button">
-          RESET!
+      <div className="motif-solution">La solution était {solution}</div>
+      <a href="http://localhost:3000/motif">
+        <button className="motif-button" type="button">
+          RESET
         </button>
       </a>
     </div>
@@ -40,4 +40,3 @@ function EndMessage({ endMessage, insult }) {
 }
 
 export default EndMessage;
-// add conditional logic in

@@ -1,16 +1,22 @@
 import { useState, useEffect } from "react";
 import "./motif.css";
 import ColorLegend from "./ColorLegend";
-import MotifGame from "./MotifGame";
 import KeyboardContainer from "../keyboard/KeyboardContainer";
+import FourSquareSpinner from "../Spinner/FourSquareSpinner";
+import EndMessage from "./EndMessage";
 
 function Motif() {
   const [solution, setSolution] = useState("");
   const [input, setInput] = useState("");
-  // const [feedbackColors, setFeedbackColors] = useState(Array(10).fill(""));
   const [historicArray, setHistoricArray] = useState([]);
   const [attempt, setAttempt] = useState(0);
-  // const [gameOver, setGameOver] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
+  const [endMessage, setEndMessage] = useState("");
+
+  function getGameOverClass() {
+    if (gameOver) return "motif-game-over";
+    return "";
+  }
 
   // gereration of array with 10 empty elements
   function generateEmptyArray() {
@@ -22,6 +28,7 @@ function Motif() {
   }
   const [row, setRow] = useState(generateEmptyArray());
 
+  // fetching the API
   useEffect(() => {
     fetch(
       "https://my-json-server.typicode.com/florine-vnt/words-api/coiffeurs-10"
@@ -31,10 +38,11 @@ function Motif() {
         // random a number between 0 & 29 (size of the array)
         const randomSolution = data[Math.floor(Math.random() * data.length)];
         setSolution(randomSolution.nom);
-        // console.log(randomSolution.nom);
       });
   }, [setSolution]);
+  // console.log(solution);
 
+  // use colors to determine if letter is at the right place, or in the word, or isn't included
   const validationWordColors = (lettre, index) => {
     if (solution[index] === lettre) {
       return "#2cbfe2"; // blue color
@@ -45,7 +53,10 @@ function Motif() {
     return "white";
   };
 
+  // copy the input into the grid & check the colors once the row is complete
   useEffect(() => {
+    if (gameOver) return;
+
     for (let i = 0; i < 10; i += 1) {
       setRow((prevValue) => {
         const copy = [...prevValue];
@@ -55,30 +66,47 @@ function Motif() {
     }
 
     if (input.length === 10 && attempt <= 5) {
-      const array = input.split("");
-      const arrayLettersWithStatus = array.map((l, index) => ({
-        lettre: l,
-        status: validationWordColors(l, index),
-      }));
+      if (input !== solution) {
+        const array = input.split("");
+        const arrayLettersWithStatus = array.map((l, index) => ({
+          lettre: l,
+          status: validationWordColors(l, index),
+        }));
 
-      setHistoricArray((currentValue) => [
-        ...currentValue,
-        ...arrayLettersWithStatus,
-      ]);
-      setRow(generateEmptyArray());
-      setInput("");
-      setAttempt((prevCount) => prevCount + 1);
+        setHistoricArray((currentValue) => [
+          ...currentValue,
+          ...arrayLettersWithStatus,
+        ]);
+        setRow(generateEmptyArray());
+        setInput("");
+        setAttempt((prevCount) => prevCount + 1);
+      } else {
+        // check colors when solution = input
+        const arrayLettersWithStatus = solution.split("").map((l, index) => ({
+          lettre: l,
+          status: validationWordColors(l, index),
+        }));
+
+        setHistoricArray((currentValue) => [
+          ...currentValue,
+          ...arrayLettersWithStatus,
+        ]);
+      }
     }
-  }, [input, attempt]);
 
-  // condition to end the game. Idea: put these lines in return & add a component EndMessage
-  if (
-    (input.length === 10 && attempt === 5) ||
-    (input.length === 10 && input === solution)
-  ) {
-    // console.log("game is over");
-  }
+    // Win/Lose condition
+    if (input.length === 10 && input === solution) {
+      setEndMessage("YOU WIN");
+      setGameOver(true);
+    }
 
+    if (input.length === 10 && attempt === 5 && input !== solution) {
+      setEndMessage("YOU LOSE");
+      setGameOver(true);
+    }
+  }, [input, attempt, solution, endMessage, gameOver]);
+
+  // add the color generated to the status
   const generateColor = (el) => {
     if (el.status === "#2cbfe2") {
       return "#2cbfe2"; // blue color
@@ -88,24 +116,6 @@ function Motif() {
     }
     return "white";
   };
-  // use colors to determine if letter is at the right place, or in the word, or isn't included
-  // useEffect(() => {
-  //   const inputArray = input.split("");
-  //   const solutionArray = solution.split("");
-
-  //   if (inputArray.length === 10) {
-  //     const newFeedbackColors = inputArray.map((letter, index) => {
-  //       if (letter === solutionArray[index]) {
-  //         return "#2cbfe2"; // blue color
-  //       }
-  //       if (solutionArray.includes(letter)) {
-  //         return "#ffb703"; // orange color
-  //       }
-  //       return "white";
-  //     });
-  //     setFeedbackColors(newFeedbackColors);
-  //   }
-  // }, [input, solution]);
 
   return (
     <section className="motif-game">
@@ -113,32 +123,37 @@ function Motif() {
         <h3>Mo'tif</h3>
         <img src="./src/assets/images/thierry.png" alt="Thierry Beccaro" />
       </header>
-      <div className="grille-jeux">
-        {historicArray.map((el) => (
-          <div
-            key={Math.random() * 1000}
-            style={{
-              backgroundColor: generateColor(el),
-            }}
-          >
-            {el.lettre}
-          </div>
-        ))}
-        {/* {historicArray.length > 0 ? historicArray : null } */}
-        {/* next step : si historic.length existe alors on rend la div historic + on map une nouvelle row */}
-        {attempt <= 5 &&
-          row.map((el) => (
-            <div
-              key={Math.random() * 1000}
-              // style={{ backgroundColor: feedbackColors[index] }}
-            >
-              {el}
+      {!solution ? (
+        <FourSquareSpinner />
+      ) : (
+          <div>
+            {gameOver ? (
+              <EndMessage endMessage={endMessage} solution={solution} />
+            ) : (
+                <section className="grille-jeux">
+                  {historicArray.map((el) => (
+                    <div
+                      key={Math.random() * 1000}
+                      style={{
+                        backgroundColor: generateColor(el),
+                      }}
+                    >
+                      {el.lettre}
+                    </div>
+                  ))}
+                  {input !== solution &&
+                    attempt <= 5 &&
+                    row.map((el) => <div key={Math.random() * 1000}>{el}</div>)}
+                </section>
+              )}
+            <div className={getGameOverClass()}>
+              <ColorLegend />
             </div>
-          ))}
+          </div>
+        )}
+      <div className={getGameOverClass()}>
+        <KeyboardContainer input={input} setInput={setInput} limit={10} />
       </div>
-      <ColorLegend />
-      <MotifGame solution={solution} />
-      <KeyboardContainer input={input} setInput={setInput} limit={10} />
     </section>
   );
 }

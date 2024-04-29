@@ -1,141 +1,131 @@
-// import "./synaps.css";
-// // import Check from "./Check";
+import "./synaps.css";
+import { useState, useEffect } from "react";
 
-// function check1() {
-//   const correctLetters = document.querySelectorAll(".yellow");
-//   correctLetters.forEach((letter) => {
-//     letter.classList.remove("gainsboro");
-//   });
+function Synaps() {
+  const [selectedLetters, setSelectedLetters] = useState([]);
+  const [words, setWords] = useState([]);
+  const [grid, setGrid] = useState([]);
+  const [count, setCount] = useState(0);
 
-//   const correctAnswers = ["game", "car", "day", "food"];
-//   let score1 = 0;
-//   const selectedLetters = [];
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch("https://trouve-mot.fr/api/sizemax/10/5");
+        if (!response.ok) {
+          throw new Error("Erreur lors de la récupération des données");
+        }
+        const jsonData = await response.json();
+        const extractedWordList = jsonData.map((item) => item.name);
+        setWords(extractedWordList);
+      } catch (error) {
+        console.error("Erreur lors de la récupération des données :", error);
+      }
+    }
+    fetchData();
+  }, []);
 
-//   document.querySelectorAll(".gainsboro").forEach((cell) => {
-//     cell.classList.remove("gainsboro");
-//   });
+  useEffect(() => {
+    if (words.length > 0) {
+      const gridSize = 10;
+      const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      const newGrid = Array.from({ length: gridSize }, () =>
+        Array.from(
+          { length: gridSize },
+          () => letters[Math.floor(Math.random() * letters.length)]
+        )
+      );
 
-//   const sortedSelectedLetters = selectedLetters.slice().sort().join("");
+      words.forEach((word) => {
+        const direction = Math.random() > 0.5 ? "horizontal" : "vertical";
+        let row;
+        let col;
+        if (direction === "horizontal") {
+          row = Math.floor(Math.random() * gridSize);
+          col = Math.floor(Math.random() * (gridSize - word.length));
+        } else {
+          row = Math.floor(Math.random() * (gridSize - word.length));
+          col = Math.floor(Math.random() * gridSize);
+        }
+        for (let i = 0; i < word.length; i += 1) {
+          if (direction === "horizontal") {
+            newGrid[row][col + i] = word[i];
+          } else {
+            newGrid[row + i][col] = word[i];
+          }
+        }
+      });
 
-//   correctAnswers.forEach((answer) => {
-//     const sortedAnswer = answer.split("").sort().join("");
-//     if (sortedSelectedLetters === sortedAnswer) {
-//       selectedLetters.forEach((letter) => {
-//         document
-//           .querySelector(`[data-letter="${letter}"]`)
-//           .classList.add("yellow");
-//       });
-//       score1++;
-//       document.getElementById("score").innerText = `Score: ${score1}`;
-//       document.querySelectorAll(".yellow").forEach((cell) => {
-//         cell.classList.add("disabled");
-//       });
+      setGrid(newGrid);
+    }
+  }, [words]);
 
-//       // Mark the word in the word list as found
-//       document
-//         .getElementById(`word${correctAnswers.indexOf(answer) + 1}`)
-//         .classList.add("word-found");
-//     }
-//   });
-//   // Clear the selected letters
-//   selectedLetters.length = 0;
+  const handleClick = (indexRow, indexCol) => {
+    const letter = grid[indexRow][indexCol];
+    const newSelectedLetters = [...selectedLetters];
+    const letterIndex = newSelectedLetters.findIndex(
+      (item) => item.x === indexRow && item.y === indexCol
+    );
+    if (letterIndex !== -1) {
+      // Si la lettre est déjà sélectionnée, la supprimer de la liste des lettres sélectionnées
+      newSelectedLetters.splice(letterIndex, 1);
+    } else {
+      // Sinon, ajouter la lettre à la liste des lettres sélectionnées
+      newSelectedLetters.push({ x: indexRow, y: indexCol, letter });
+    }
+    setSelectedLetters(newSelectedLetters);
+  };
 
-//   // Check if all correct answers have been found
-//   if (score1 === correctAnswers.length) {
-//     alert("Congratulations! You won!");
-//     const disableGame1 = document.getElementById("disable_click1");
-//     disableGame1.style.pointerEvents = "none";
-//   }
-// }
+  return (
+    <>
+      <h2 id="title-synaps">Synapsyndrome</h2>
+      <div className="container-synaps">
+        <p id="score-synaps">Count: {count}</p>
+        {grid.length > 0 && (
+          <table className="table-class">
+            <tbody>
+              {grid.map((row, indexRow) => (
+                <tr key={Math.random() * 1000}>
+                  {row.map((letter, indexCol) => {
+                    const isSelected = selectedLetters.some(
+                      (item) => item.x === indexRow && item.y === indexCol
+                    );
+                    return (
+                      <td
+                        key={Math.random() * 1000}
+                        className={isSelected ? "selected" : ""}
+                        onClick={() => handleClick(indexRow, indexCol)}
+                      >
+                        {letter}
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+        <p id="wordlist">
+          <strong>Word list: </strong>
+          <br />
+          <span>
+            {words.map((word, index) => (
+              <span key={word}>
+                {word}
+                {index !== words.length - 1 && <br />}
+              </span>
+            ))}
+          </span>
+        </p>
+      </div>
+      <button
+        className="button-synaps"
+        type="button"
+        onClick={() => setCount((prevCount) => prevCount + 1)}
+      >
+        Submit
+      </button>
+    </>
+  );
+}
 
-// function Synaps() {
-//   window.onload = function () {
-//     document.querySelectorAll("td").forEach((node) => {
-//       if (!node.textContent) {
-//         const randomLetters = Math.round(65 + Math.random() * 25);
-//         node.textContent = String.fromCharCode(randomLetters);
-//       }
-//     });
-//   };
-
-//   document.querySelectorAll(".white1").forEach((td) => {
-//     td.addEventListener("click", () => {
-//       if (!td.classList.contains("yellow")) {
-//         if (td.classList.contains("gainsboro")) {
-//           td.classList.remove("gainsboro");
-//           const index = selectedLetters.indexOf(td.getAttribute("data-letter"));
-//           if (index !== -1) {
-//             selectedLetters.splice(index, 1);
-//           }
-//         } else {
-//           td.classList.add("gainsboro");
-//           selectedLetters.push(td.getAttribute("data-letter"));
-//         }
-//       }
-//     });
-//   });
-
-//   return (
-//     // <>
-//     <div className="container">
-//       <div className="boxgrille">
-//       <table>
-//         <tr>
-//         <td className="white1" data-letter="f">F</td>
-//         <td className="white1" data-letter="o">O</td>
-//         <td className="white1" data-letter="o">O</td>
-//         <td className="white1" data-letter="d">D</td>
-//         </tr>
-
-//         <tr>
-//         <td className="white1" data-letter="c">C</td>
-//         <td className="white1" data-letter="a">A</td>
-//         <td className="white1" data-letter="r">R</td>
-//         <td className="white1" data-letter=""></td>
-//         </tr>
-
-//         <tr>
-//         <td className="white1" data-letter="d">D</td>
-//         <td className="white1" data-letter="a">A</td>
-//         <td className="white1" data-letter="y">Y</td>
-//         <td className="white1" data-letter=""></td>
-//         </tr>
-
-//         <tr>
-//         <td className="white1" data-letter="g">G</td>
-//         <td className="white1" data-letter="a">A</td>
-//         <td className="white1" data-letter="m">M</td>
-//         <td className="white1" data-letter="e">E</td>
-//         </tr>
-//       </table>
-//       </div>
-//       <br />
-//       <div className="boxword">
-//       <p>
-//         <strong>Word List:0</strong>
-//         <br />
-//         <span id="word4">FOOD</span>
-//         <br />
-//         <span id="word3">CAR</span>
-//         <br />
-//         <span id="word2">DAY</span>
-//         <br />
-//         <span id="word1">GAME</span>
-//       </p>
-//       </div>
-//       <br />
-//       <div className="boxbutton">
-//       <div id="direction">
-//         <button className="button1" type="button" onClick={check1}>
-//           Submit
-//         </button>
-//         <br />
-//         <br />
-//         <div id="score">Score: 0</div>
-//       </div>
-//       </div>
-//       </div>
-//     // </>
-//   );
-// }
-// export default Synaps;
+export default Synaps;
