@@ -23,8 +23,7 @@ const gameItems = [
   },
   {
     title: "Synapsyndromes",
-    description:
-      "Chaque synapse compte pour démêler le verbe et vous faire naviguer dans un océan de langage ludique !",
+    description: "Tissez des mots, stimulez vos neurones.",
     image: "./src/assets/images/synap_img.png",
     link: "/synaps",
   },

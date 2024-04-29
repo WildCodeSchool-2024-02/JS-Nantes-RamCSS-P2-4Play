@@ -1,15 +1,24 @@
 import { useState, useEffect } from "react";
 import "./motif.css";
 import ColorLegend from "./ColorLegend";
-import MotifGame from "./MotifGame";
 import KeyboardContainer from "../keyboard/KeyboardContainer";
-import FourSquareSpinner from "./FourSquareSpinner";
+import FourSquareSpinner from "../Spinner/FourSquareSpinner";
+
+import EndMessage from "./EndMessage";
+
 
 function Motif() {
   const [solution, setSolution] = useState("");
   const [input, setInput] = useState("");
   const [historicArray, setHistoricArray] = useState([]);
   const [attempt, setAttempt] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
+  const [endMessage, setEndMessage] = useState("");
+
+  function getGameOverClass() {
+    if (gameOver) return "motif-game-over";
+    return "";
+  }
 
   // gereration of array with 10 empty elements
   function generateEmptyArray() {
@@ -33,6 +42,7 @@ function Motif() {
         setSolution(randomSolution.nom);
       });
   }, [setSolution]);
+  // console.log(solution);
 
   // use colors to determine if letter is at the right place, or in the word, or isn't included
   const validationWordColors = (lettre, index) => {
@@ -47,6 +57,8 @@ function Motif() {
 
   // copy the input into the grid & check the colors once the row is complete
   useEffect(() => {
+    if (gameOver) return;
+
     for (let i = 0; i < 10; i += 1) {
       setRow((prevValue) => {
         const copy = [...prevValue];
@@ -56,29 +68,45 @@ function Motif() {
     }
 
     if (input.length === 10 && attempt <= 5) {
-      const array = input.split("");
-      const arrayLettersWithStatus = array.map((l, index) => ({
-        lettre: l,
-        status: validationWordColors(l, index),
-      }));
+      if (input !== solution) {
+        const array = input.split("");
+        const arrayLettersWithStatus = array.map((l, index) => ({
+          lettre: l,
+          status: validationWordColors(l, index),
+        }));
 
-      setHistoricArray((currentValue) => [
-        ...currentValue,
-        ...arrayLettersWithStatus,
-      ]);
-      setRow(generateEmptyArray());
-      setInput("");
-      setAttempt((prevCount) => prevCount + 1);
+        setHistoricArray((currentValue) => [
+          ...currentValue,
+          ...arrayLettersWithStatus,
+        ]);
+        setRow(generateEmptyArray());
+        setInput("");
+        setAttempt((prevCount) => prevCount + 1);
+      } else {
+        // check colors when solution = input
+        const arrayLettersWithStatus = solution.split("").map((l, index) => ({
+          lettre: l,
+          status: validationWordColors(l, index),
+        }));
+
+        setHistoricArray((currentValue) => [
+          ...currentValue,
+          ...arrayLettersWithStatus,
+        ]);
+      }
     }
-  }, [input, attempt]);
 
-  // condition to end the game. Idea: put these lines in return & add a component EndMessage
-  if (
-    (input.length === 10 && attempt === 5) ||
-    (input.length === 10 && input === solution)
-  ) {
-    // console.log("game is over");
-  }
+    // Win/Lose condition
+    if (input.length === 10 && input === solution) {
+      setEndMessage("YOU WIN");
+      setGameOver(true);
+    }
+
+    if (input.length === 10 && attempt === 5 && input !== solution) {
+      setEndMessage("YOU LOSE");
+      setGameOver(true);
+    }
+  }, [input, attempt, solution, endMessage, gameOver]);
 
   // add the color generated to the status
   const generateColor = (el) => {
@@ -97,26 +125,38 @@ function Motif() {
         <h3>Mo'tif</h3>
         <img src="./src/assets/images/thierry.png" alt="Thierry Beccaro" />
       </header>
-      {!solution ? (<FourSquareSpinner />) :
-      <div className="body-game">
-      <section className="grille-jeux">
-        {historicArray.map((el) => (
-          <div
-            key={Math.random() * 1000}
-            style={{
-              backgroundColor: generateColor(el),
-            }}
-          >
-            {el.lettre}
+      {!solution ? (
+        <FourSquareSpinner />
+      ) : (
+
+        <div>
+          {gameOver ? (
+            <EndMessage endMessage={endMessage} solution={solution} />
+          ) : (
+            <section className="grille-jeux">
+              {historicArray.map((el) => (
+                <div
+                  key={Math.random() * 1000}
+                  style={{
+                    backgroundColor: generateColor(el),
+                  }}
+                >
+                  {el.lettre}
+                </div>
+              ))}
+              {input !== solution &&
+                attempt <= 5 &&
+                row.map((el) => <div key={Math.random() * 1000}>{el}</div>)}
+            </section>
+          )}
+          <div className={getGameOverClass()}>
+            <ColorLegend />
           </div>
-        ))}
-        {attempt <= 5 &&
-          row.map((el) => <div key={Math.random() * 1000}>{el}</div>)}
-      </section> 
-      <ColorLegend /> 
-      <MotifGame solution={solution} />
-      </div> }
-      <KeyboardContainer input={input} setInput={setInput} limit={10} />
+        </div>
+      )}
+      <div className={getGameOverClass()}>
+        <KeyboardContainer input={input} setInput={setInput} limit={10} />
+      </div>
     </section>
   );
 }

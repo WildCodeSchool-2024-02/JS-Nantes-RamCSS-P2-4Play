@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import KeyboardContainer from "../keyboard/KeyboardContainer";
 import TauntGame from "./TauntGame";
-import FourSquareSpinner from "./FourSquareSpinner";
+import FourSquareSpinner from "../Spinner/FourSquareSpinner";
 import "./taunts.css";
 
 function Taunts() {
@@ -9,11 +9,12 @@ function Taunts() {
   const [insult, setInsult] = useState(null);
   const [gameOver, setGameOver] = useState(false);
 
+  // function to not display keyboard if GameOver is true
   function getKeyboardClass() {
     if (gameOver) return "game-over-kb";
     return "";
   }
-
+  // fetch function to retrieve a random id from the api, and set the insult for the current game.
   async function getInsult() {
     const baseURL =
       "https://my-json-server.typicode.com/brewost/words-api/insults";
@@ -22,9 +23,8 @@ function Taunts() {
     const response = await fetch(insultURL);
     const newInsult = await response.json();
     setInsult(newInsult);
-    // console.log("My new insult", newInsult);
   }
-
+  // useRef aropund the get insult function to stop double rendering due to react strict mode.
   const initialised = useRef(false);
   useEffect(() => {
     if (!initialised.current) {
@@ -46,14 +46,6 @@ function Taunts() {
           setGameOver={setGameOver}
         />
       )}
-
-      {/* {!gameOver ? (
-        <KeyboardContainer
-          input={input}
-          setInput={setInput}
-          gameOver={gameOver}
-        />
-      ) : null} */}
       <div className={getKeyboardClass()}>
         <KeyboardContainer input={input} setInput={setInput} />
       </div>

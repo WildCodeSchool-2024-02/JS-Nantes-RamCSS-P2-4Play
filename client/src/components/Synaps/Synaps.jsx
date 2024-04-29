@@ -8,7 +8,7 @@ function Synaps() {
   const [grid, setGrid] = useState([]);
   const [score, setScore] = useState(0);
   const [foundWords, setFoundWords] = useState([]);
-  const [showConfetti, setShowConfetti] = useState(false); // Ajout de l'état pour contrôler l'affichage de l'animation Confetti
+  const [showConfetti, setShowConfetti] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -32,16 +32,55 @@ function Synaps() {
       const gridSize = 10;
       const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       const newGrid = Array.from({ length: gridSize }, () =>
-        Array.from({ length: gridSize }, () => letters[Math.floor(Math.random() * letters.length)])
+        Array.from({ length: gridSize }, () => "")
       );
 
       words.forEach((word) => {
-        const row = Math.floor(Math.random() * gridSize);
-        const col = Math.floor(Math.random() * (gridSize - word.length + 1));
-        for (let i = 0; i < word.length; i += 1) {
-          newGrid[row][col + i] = word[i];
+        let wordPlaced = false;
+        while (!wordPlaced) {
+          const direction = Math.random() < 0.5 ? "horizontal" : "vertical";
+          let row;
+          let col;
+          if (direction === "horizontal") {
+            row = Math.floor(Math.random() * gridSize);
+            col = Math.floor(Math.random() * (gridSize - word.length + 1));
+          } else {
+            row = Math.floor(Math.random() * (gridSize - word.length + 1));
+            col = Math.floor(Math.random() * gridSize);
+          }
+
+          let validPosition = true;
+          for (let i = 0; i < word.length; i+=1) {
+            if (
+              (direction === "horizontal" && newGrid[row][col + i] !== "") ||
+              (direction === "vertical" && newGrid[row + i][col] !== "")
+            ) {
+              validPosition = false;
+              break;
+            }
+          }
+
+          if (validPosition) {
+            for (let i = 0; i < word.length; i+=1) {
+              if (direction === "horizontal") {
+                newGrid[row][col + i] = word[i];
+              } else {
+                newGrid[row + i][col] = word[i];
+              }
+            }
+            wordPlaced = true;
+          }
         }
       });
+
+      // Fill empty cells with random letters
+      for (let i = 0; i < gridSize; i+=1) {
+        for (let j = 0; j < gridSize; j+=1) {
+          if (newGrid[i][j] === "") {
+            newGrid[i][j] = letters[Math.floor(Math.random() * letters.length)];
+          }
+        }
+      }
 
       setGrid(newGrid);
     }

@@ -6,7 +6,9 @@ function FourSquareSpinner() {
       height="4em"
       viewBox="0 0 24 24"
     >
-      <rect width="9" height="9" x="1.5" y="1.5" fill="#ffb703" rx="1">
+
+      <rect width="9" height="9" x="1.5" y="1.5" fill="#FFB703" rx="1">
+
         <animate
           id="svgSpinnersBlocksScale0"
           attributeName="x"
@@ -37,7 +39,9 @@ function FourSquareSpinner() {
           values="9;11;9"
         />
       </rect>
-      <rect width="9" height="9" x="13.5" y="1.5" fill="#ffb703" rx="1">
+
+      <rect width="9" height="9" x="13.5" y="1.5" fill="#FFB703" rx="1">
+
         <animate
           attributeName="x"
           begin="svgSpinnersBlocksScale0.begin+0.15s"
@@ -67,7 +71,9 @@ function FourSquareSpinner() {
           values="9;11;9"
         />
       </rect>
-      <rect width="9" height="9" x="13.5" y="13.5" fill="#ffb703" rx="1">
+
+      <rect width="9" height="9" x="13.5" y="13.5" fill="#FFB703" rx="1">
+
         <animate
           attributeName="x"
           begin="svgSpinnersBlocksScale0.begin+0.3s"
@@ -97,7 +103,9 @@ function FourSquareSpinner() {
           values="9;11;9"
         />
       </rect>
-      <rect width="9" height="9" x="1.5" y="13.5" fill="#ffb703" rx="1">
+
+      <rect width="9" height="9" x="1.5" y="13.5" fill="#FFB703" rx="1">
+
         <animate
           id="svgSpinnersBlocksScale1"
           attributeName="x"
