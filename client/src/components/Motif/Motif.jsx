@@ -168,7 +168,7 @@ function Motif() {
             </section>
           )}
           <div className={getGameOverClass()}>
-            <p className="text-attempt">Il reste {6 - attempt} tentatives</p>
+            <p className="text-attempt">Il te reste {6 - attempt} tentatives</p>
             <ColorLegend />
           </div>
         </div>
