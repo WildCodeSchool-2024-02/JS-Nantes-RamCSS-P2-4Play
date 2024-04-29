@@ -28,8 +28,9 @@ th,
 td {
   border: 1px solid black;
 }
-td.try {
+td.selected {
   background-color: #ffb703;
+  color: black;
 }
 
 #wordlist {
