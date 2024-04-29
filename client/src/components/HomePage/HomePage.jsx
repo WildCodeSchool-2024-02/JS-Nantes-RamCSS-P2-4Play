@@ -32,7 +32,7 @@ const gameItems = [
 function HomePage() {
   const urlbase = "http://localhost:3000";
   return (
-    <>
+    <div className="hp-cards">
       {/* render a CardGame component to each element of the props array */}
       <ul>
         {gameItems.map((item) => (
@@ -43,7 +43,7 @@ function HomePage() {
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 }
 
