@@ -3,7 +3,7 @@ import "./motif.css";
 import ColorLegend from "./ColorLegend";
 import MotifGame from "./MotifGame";
 import KeyboardContainer from "../keyboard/KeyboardContainer";
-import FourSquareSpinner from "./FourSquareSpinner";
+import FourSquareSpinner from "../Spinner/FourSquareSpinner";
 import EndMessage from "./EndMessage";
 
 function Motif() {

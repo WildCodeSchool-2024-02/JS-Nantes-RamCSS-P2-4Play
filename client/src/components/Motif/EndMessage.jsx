@@ -7,7 +7,7 @@ function EndMessage({ endMessage }) {
         <>
           <div>TA PERFORMANCE EST EBOURRIFANTE 
             TA VICTOIRE EST PERMANENTE
-            BRAVO TU AS DEMELE CETTE ENIGME AVEC SUCCES
+            BRAVO TU AS DEMELE CETTE ENIGME AVEC SUCCES 
             TU AS COIFFE CETTE VICTOIRE AVEC ELEGANCE
             BRAVO TU AS COUPE COURT A LA COMPETITION </div>
           {/*  react confetti explosion */}
