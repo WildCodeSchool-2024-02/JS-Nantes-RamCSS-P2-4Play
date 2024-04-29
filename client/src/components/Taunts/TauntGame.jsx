@@ -30,7 +30,7 @@ function scrambledInsult(insult) {
 
 // function to create empty anagram answer dashes
 function emptyAnswer(insult) {
-  return new Array(insult.slang.length).fill("_").join("");
+  return new Array(insult.slang.length).fill("-").join("");
 }
 // function to add players letter to answer dash
 function TauntGame({ insult, input, gameOver, setGameOver }) {
@@ -51,7 +51,7 @@ function TauntGame({ insult, input, gameOver, setGameOver }) {
     }
     // add a win/lose condition change GameOver state to false
 
-    if (!answer.includes("_")) {
+    if (!answer.includes("-")) {
       if (answer === insult.slang.toUpperCase()) {
         setEndMessage("YOU WIN!");
       } else {

@@ -1,4 +1,4 @@
-.imgContainer {
+.hp-img-container {
   background-color: #2cbfe2;
   border-radius: 1rem;
   font-family: "Grandstander";
@@ -9,7 +9,7 @@
   width: 70vw;
 }
 
-.imgContainer img {
+.hp-img-container img {
   /* width: 15vw; */
   border-radius: 5vh;
   height: 10vh;
@@ -17,46 +17,46 @@
   align-self: center;
 }
 
-figcaption {
+.hp-img-container figcaption {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   margin: 0.5rem;
 }
 
-h2 {
+.hp-img-container h2 {
   text-align: center;
   font-size: medium;
 }
 
-p {
+.hp-img-container p {
   text-align: center;
   font-size: small;
 }
 /* RESPONSIVE */
 @media screen and (min-width: 768px) {
-  .imgContainer {
+  .hp-img-container {
     width: 40vw;
     height: 35vh;
   }
-  .imgContainer img {
+  .hp-img-container img {
     border-radius: 12.5vh;
     height: 25vh;
     width: 25vh;
     align-self: center;
   }
-  figcaption {
+  .hp-img-container figcaption {
     display: flex;
     margin: 1rem;
     display: flex;
     justify-content: space-evenly;
   }
 
-  h2 {
+  .hp-img-container h2 {
     font-size: 2.75rem;
   }
 
-  p {
+  .hp-img-container p {
     font-size: 1.75rem;
   }
 }
