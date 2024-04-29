@@ -1,11 +1,10 @@
 import Confetti from "react-confetti-boom";
-import Navbar from "../navbar/Navbar";
+
 import "./errorpage.css";
 
 function ErrorPage() {
   return (
     <div className="errorpage">
-      <Navbar />
       <h1> U DONE FUCKED IT UP!</h1>
       <Confetti
         mode="boom"
