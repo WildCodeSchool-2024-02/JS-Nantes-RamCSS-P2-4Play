@@ -3,7 +3,7 @@ import "./motif.css";
 import ColorLegend from "./ColorLegend";
 import MotifGame from "./MotifGame";
 import KeyboardContainer from "../keyboard/KeyboardContainer";
-import FourSquareSpinner from "./FourSquareSpinner";
+import FourSquareSpinner from "../Spinner/FourSquareSpinner";
 
 function Motif() {
   const [solution, setSolution] = useState("");
@@ -97,25 +97,28 @@ function Motif() {
         <h3>Mo'tif</h3>
         <img src="./src/assets/images/thierry.png" alt="Thierry Beccaro" />
       </header>
-      {!solution ? (<FourSquareSpinner />) :
-      <div className="body-game">
-      <section className="grille-jeux">
-        {historicArray.map((el) => (
-          <div
-            key={Math.random() * 1000}
-            style={{
-              backgroundColor: generateColor(el),
-            }}
-          >
-            {el.lettre}
-          </div>
-        ))}
-        {attempt <= 5 &&
-          row.map((el) => <div key={Math.random() * 1000}>{el}</div>)}
-      </section> 
-      <ColorLegend /> 
-      <MotifGame solution={solution} />
-      </div> }
+      {!solution ? (
+        <FourSquareSpinner />
+      ) : (
+        <div className="body-game">
+          <section className="grille-jeux">
+            {historicArray.map((el) => (
+              <div
+                key={Math.random() * 1000}
+                style={{
+                  backgroundColor: generateColor(el),
+                }}
+              >
+                {el.lettre}
+              </div>
+            ))}
+            {attempt <= 5 &&
+              row.map((el) => <div key={Math.random() * 1000}>{el}</div>)}
+          </section>
+          <ColorLegend />
+          <MotifGame solution={solution} />
+        </div>
+      )}
       <KeyboardContainer input={input} setInput={setInput} limit={10} />
     </section>
   );
