@@ -9,7 +9,7 @@
   border: 0 solid;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
-  gap: 20px;
+  gap: 5px;
   align-items: center;
   justify-items: center;
   width: 85vw;
@@ -32,7 +32,10 @@ td.selected {
   background-color: #ffb703;
   color: black;
 }
-
+.found-word {
+  text-decoration: line-through;
+  color: gray;
+}
 #wordlist {
   padding: 10px;
 }
