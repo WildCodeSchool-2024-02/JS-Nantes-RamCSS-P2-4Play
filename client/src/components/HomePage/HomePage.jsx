@@ -11,7 +11,7 @@ const gameItems = [
   },
   {
     title: "Twisted Taunts",
-    description: "Concealed comebacks",
+    description: "Antisocial Anagrams",
     image: "./src/assets/images/twisted_img.png",
     link: "/taunts",
   },

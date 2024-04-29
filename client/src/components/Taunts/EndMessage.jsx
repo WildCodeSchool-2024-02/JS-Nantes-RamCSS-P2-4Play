@@ -8,18 +8,16 @@ function EndMessage({ endMessage, insult }) {
       {endMessage === "YOU WIN!" ? (
         <>
           <div>YOU'RE SMARTER THAN YOU LOOK! </div>
-          {/*  react confetti explosion */}
           <Confetti
-            // ref={confettiRef}
-            mode="fall"
+            mode="boom"
             x={0.5}
-            y={0.5}
-            particleCount={100}
+            y={0.2}
+            particleCount={200}
             deg={270}
             shapeSize={18}
             spreadDeg={45}
             effectInterval={2000}
-            effectCount={3}
+            effectCount={4}
             colors={["#8ECAE6", "#219EBC", "#023047", "#FFB703", "#FB8500"]}
           />
         </>
@@ -29,11 +27,11 @@ function EndMessage({ endMessage, insult }) {
         </div>
       )}
 
-      <div>{insult.slang}</div>
+      <div className="endanswer">{insult.slang.toUpperCase()}</div>
       <div>{insult.def_fr}</div>
       <div>{insult.def_en} </div>
       <a href="http://localhost:3000/taunts">
-        <button className="button" type="button">
+        <button className="tauntsbutton" type="button">
           RESET!
         </button>
       </a>

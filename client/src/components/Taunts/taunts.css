@@ -1,32 +1,36 @@
 .taunts {
-  max-width: 800px;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  margin: 0 auto;
   align-items: center;
+  justify-content: space-between;
 }
 .taunts > h1 {
   color: #2cbfe2;
   font-family: "Grandstander";
   font-size: 2.5rem;
+  margin-top: 1rem;
 }
 .tauntgame > h2 {
   color: #2cbfe2;
   font-family: "Grandstander";
   font-size: 2rem;
+  padding: 1rem;
+  letter-spacing: 0.6rem;
 }
 .endmessage {
   max-width: 800px;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  margin: 0 auto;
+  gap: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
   align-items: center;
   color: #2cbfe2;
   font-family: "Grandstander";
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.4rem;
+  margin: 1rem;
 }
 .gameover {
   font-size: 3rem;
@@ -34,13 +38,64 @@
 .game-over-kb {
   display: none;
 }
-.button {
+.endanswer {
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+.tauntsbutton {
   background-color: #ffb703;
-  border: none;
+  border: 1px solid black;
   color: black;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  position: relative;
+  margin: 20px;
+  font-family: "Grandstander";
+  border-radius: 4px;
+  box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+}
+.tauntsbutton:hover {
+  background-color: #023047;
+  color: white;
+  border: black solid 1px;
+}
+/*  RESPONSIVE */
+
+@media screen and (min-width: 768px) {
+  .taunts {
+    gap: 4rem;
+  }
+  .taunts > h1 {
+    font-size: 5rem;
+    margin-top: 3rem;
+  }
+  .tauntgame > h2 {
+    font-size: 4rem;
+    letter-spacing: 1rem;
+  }
+  .endmessage {
+    gap: 2.5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    font-size: 2rem;
+    margin: 2rem;
+  }
+  .gameover {
+    font-size: 5rem;
+  }
+  .endanswer {
+    font-size: 4rem;
+  }
+
+  .tauntsbutton {
+    border: 2px solid black;
+    font-size: 40px;
+  }
+  .tauntsbutton:hover {
+    border: black solid 2px;
+  }
 }

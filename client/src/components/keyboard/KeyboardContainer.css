@@ -1,4 +1,4 @@
-input {
+vwinput {
   width: 100%;
   height: 100px;
   padding: 20px;
@@ -8,6 +8,6 @@ input {
 }
 
 .simple-keyboard {
-  max-width: 850px;
+  width: 90vw;
   background-color: #219ebc;
 }
