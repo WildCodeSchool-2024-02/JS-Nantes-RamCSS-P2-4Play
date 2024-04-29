@@ -3,14 +3,14 @@
   font-size: 5em;
   text-align: center;
   animation-name: example;
-  animation-duration: 1s;
+  animation-duration: 1.5s;
   animation-iteration-count: infinite;
 }
 
 @keyframes example {
   0% {
     color: #219ebc;
-    text-shadow: 0 0 20px black;
+    text-shadow: 0 0 10px black;
   }
 
   25% {
@@ -27,8 +27,8 @@
 
   50% {
     color: #219ebc;
-    text-shadow: black -5px -5px 2px;
-    transform: translate(0px, 5px);
+    text-shadow: black -3px -3px 2px;
+    transform: translate(0px, 3px);
   }
 
   70% {
@@ -39,7 +39,7 @@
 
   80% {
     color: #219ebc;
-    text-shadow: 0 0 20px black;
+    text-shadow: 0 0 10px black;
     transform: translate(-2px, 1px);
   }
 
