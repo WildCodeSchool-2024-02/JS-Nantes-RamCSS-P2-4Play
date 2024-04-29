@@ -1,0 +1,50 @@
+.motif-gameover {
+  font-family: "Grandstander";
+  font-size: 1.5em;
+  text-align: center;
+  animation-name: example;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes example {
+  0% {
+    color: #219ebc;
+    text-shadow: 0 0 10px black;
+  }
+
+  25% {
+    color: #219ebc;
+    text-shadow: 2px 2px 2px black;
+    transform: translate(-2px, 1px);
+  }
+
+  40% {
+    color: #219ebc;
+    text-shadow: none;
+    transform: translate(0, 0);
+  }
+
+  50% {
+    color: #219ebc;
+    text-shadow: black -3px -3px 2px;
+    transform: translate(0px, 3px);
+  }
+
+  70% {
+    color: #219ebc;
+    text-shadow: none;
+    transform: translate(0, 0);
+  }
+
+  80% {
+    color: #219ebc;
+    text-shadow: 0 0 10px black;
+    transform: translate(-2px, 1px);
+  }
+
+  100% {
+    color: #219ebc;
+    text-shadow: none;
+  }
+}

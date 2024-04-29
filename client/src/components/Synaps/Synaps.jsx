@@ -81,7 +81,7 @@ function Synaps() {
   useEffect(() => {
     // Sélection de toutes les cellules de la grille
     const gridCells = document.querySelectorAll(".table-class td");
-    
+
     // Ajout d'un écouteur d'événements à chaque cellule
     gridCells.forEach((cell) => {
       cell.addEventListener("click", () => {

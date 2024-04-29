@@ -45,3 +45,7 @@
 .grille-jeux > .first-letter {
   background-color: red;
 }
+
+.motif-game-over-kb {
+  display: none;
+}

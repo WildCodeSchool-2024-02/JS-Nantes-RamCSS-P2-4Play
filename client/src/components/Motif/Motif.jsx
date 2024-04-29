@@ -11,7 +11,13 @@ function Motif() {
   const [input, setInput] = useState("");
   const [historicArray, setHistoricArray] = useState([]);
   const [attempt, setAttempt] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
   const [endMessage, setEndMessage] = useState("");
+
+  function getKeyboardClass() {
+    if (gameOver) return "motif-game-over-kb";
+    return "";
+  }
 
   // gereration of array with 10 empty elements
   function generateEmptyArray() {
@@ -49,6 +55,8 @@ function Motif() {
 
   // copy the input into the grid & check the colors once the row is complete
   useEffect(() => {
+    if (gameOver) return;
+
     for (let i = 0; i < 10; i += 1) {
       setRow((prevValue) => {
         const copy = [...prevValue];
@@ -87,15 +95,16 @@ function Motif() {
     }
 
     // Win/Lose condition
-    if (input.length === 10 && input === solution){
-      setEndMessage("YOU WIN")
+    if (input.length === 10 && input === solution) {
+      setEndMessage("YOU WIN");
+      setGameOver(true);
     }
 
-    if (input.length === 10 && attempt === 5 && input !== solution){
-      setEndMessage("YOU LOSE")
+    if (input.length === 10 && attempt === 5 && input !== solution) {
+      setEndMessage("YOU LOSE");
+      setGameOver(true);
     }
-  }, [input, attempt, solution]);
-
+  }, [input, attempt, solution, endMessage, gameOver]);
 
   // add the color generated to the status
   const generateColor = (el) => {
@@ -132,16 +141,15 @@ function Motif() {
             {input !== solution &&
               attempt <= 5 &&
               row.map((el) => <div key={Math.random() * 1000}>{el}</div>)}
-            {(input.length === 10 && attempt === 5 && input !== solution) ||
-            (input.length === 10 && input === solution)
-              ? <EndMessage endMessage={endMessage}/>
-              : null}
+            {gameOver ? <EndMessage endMessage={endMessage} /> : null}
           </section>
           <ColorLegend />
           <MotifGame solution={solution} />
         </div>
       )}
+      <div className={getKeyboardClass()}>
       <KeyboardContainer input={input} setInput={setInput} limit={10} />
+      </div>
     </section>
   );
 }
