@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import "./motif.css";
 import ColorLegend from "./ColorLegend";
-import MotifGame from "./MotifGame";
 import KeyboardContainer from "../keyboard/KeyboardContainer";
 import FourSquareSpinner from "../Spinner/FourSquareSpinner";
 import EndMessage from "./EndMessage";
@@ -14,8 +13,8 @@ function Motif() {
   const [gameOver, setGameOver] = useState(false);
   const [endMessage, setEndMessage] = useState("");
 
-  function getKeyboardClass() {
-    if (gameOver) return "motif-game-over-kb";
+  function getGameOverClass() {
+    if (gameOver) return "motif-game-over";
     return "";
   }
 
@@ -41,6 +40,7 @@ function Motif() {
         setSolution(randomSolution.nom);
       });
   }, [setSolution]);
+  // console.log(solution);
 
   // use colors to determine if letter is at the right place, or in the word, or isn't included
   const validationWordColors = (lettre, index) => {
@@ -126,29 +126,33 @@ function Motif() {
       {!solution ? (
         <FourSquareSpinner />
       ) : (
-        <div className="body-game">
-          <section className="grille-jeux">
-            {historicArray.map((el) => (
-              <div
-                key={Math.random() * 1000}
-                style={{
-                  backgroundColor: generateColor(el),
-                }}
-              >
-                {el.lettre}
-              </div>
-            ))}
-            {input !== solution &&
-              attempt <= 5 &&
-              row.map((el) => <div key={Math.random() * 1000}>{el}</div>)}
-            {gameOver ? <EndMessage endMessage={endMessage} /> : null}
-          </section>
-          <ColorLegend />
-          <MotifGame solution={solution} />
+        <div>
+          {gameOver ? (
+            <EndMessage endMessage={endMessage} />
+          ) : (
+            <section className="grille-jeux">
+              {historicArray.map((el) => (
+                <div
+                  key={Math.random() * 1000}
+                  style={{
+                    backgroundColor: generateColor(el),
+                  }}
+                >
+                  {el.lettre}
+                </div>
+              ))}
+              {input !== solution &&
+                attempt <= 5 &&
+                row.map((el) => <div key={Math.random() * 1000}>{el}</div>)}
+            </section>
+          )}
+          <div className={getGameOverClass()}>
+            <ColorLegend />
+          </div>
         </div>
       )}
-      <div className={getKeyboardClass()}>
-      <KeyboardContainer input={input} setInput={setInput} limit={10} />
+      <div className={getGameOverClass()}>
+        <KeyboardContainer input={input} setInput={setInput} limit={10} />
       </div>
     </section>
   );
