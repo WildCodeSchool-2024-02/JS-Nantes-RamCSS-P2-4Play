@@ -1,3 +1,5 @@
+/* ANIMATION CSS */
+
 .pied-potence {
   height: 1vw;
   width: 35vw;
@@ -37,6 +39,8 @@
   background-color: #ffd700;
 }
 
+/* PAGE DE JEU */
+
 h1 {
   text-align: center;
   color: #2cbfe2;
@@ -56,14 +60,6 @@ h1 {
 
 @media (max-width: 600px) {
   .fromageStyle {
-    padding: 0 10px; /* Réduit l'espace sur les côtés */
+    padding: 0 10px;
   }
 }
-
-/*.cheeseWord {
-  display: flex;
-  gap: 0.25em;
-  font-size: 6rem;
-  font-weight: bold;
-  text-transform: uppercase;
-}*/

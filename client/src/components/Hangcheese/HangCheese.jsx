@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import KeyboardContainer from "../keyboard/KeyboardContainer";
 import "./hangcheese.css";
 import HangcheeseDrawing from "./HangcheeseDrawing";
-// import HangcheeseWord from "./HangcheeseWord";
-// import HangcheeseKeyboard from "./HangcheeseKeyboard";
 
 function HangCheese() {
   const [input, setInput] = useState(""); // input initialisé avec une chaîne vide (pour le clavier)
@@ -11,7 +9,6 @@ function HangCheese() {
   const [answer, setAnswer] = useState(null);
   const [badGuesses, setBadGuesses] = useState([]);
   const [remainingAttempts, setRemainingAttempts] = useState(5); // Nombre de tentatives restantes
-  // const [gameOver, setGameOver] = useState(false); // Ajout de l'état de fin de jeu
 
   useEffect(() => {
     const randomNum = Math.ceil(Math.random() * 30);

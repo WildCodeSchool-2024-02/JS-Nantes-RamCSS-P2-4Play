@@ -126,31 +126,31 @@ function Motif() {
       {!solution ? (
         <FourSquareSpinner />
       ) : (
-          <div>
-            {gameOver ? (
-              <EndMessage endMessage={endMessage} solution={solution} />
-            ) : (
-                <section className="grille-jeux">
-                  {historicArray.map((el) => (
-                    <div
-                      key={Math.random() * 1000}
-                      style={{
-                        backgroundColor: generateColor(el),
-                      }}
-                    >
-                      {el.lettre}
-                    </div>
-                  ))}
-                  {input !== solution &&
-                    attempt <= 5 &&
-                    row.map((el) => <div key={Math.random() * 1000}>{el}</div>)}
-                </section>
-              )}
-            <div className={getGameOverClass()}>
-              <ColorLegend />
-            </div>
+        <div>
+          {gameOver ? (
+            <EndMessage endMessage={endMessage} solution={solution} />
+          ) : (
+            <section className="grille-jeux">
+              {historicArray.map((el) => (
+                <div
+                  key={Math.random() * 1000}
+                  style={{
+                    backgroundColor: generateColor(el),
+                  }}
+                >
+                  {el.lettre}
+                </div>
+              ))}
+              {input !== solution &&
+                attempt <= 5 &&
+                row.map((el) => <div key={Math.random() * 1000}>{el}</div>)}
+            </section>
+          )}
+          <div className={getGameOverClass()}>
+            <ColorLegend />
           </div>
-        )}
+        </div>
+      )}
       <div className={getGameOverClass()}>
         <KeyboardContainer input={input} setInput={setInput} limit={10} />
       </div>
