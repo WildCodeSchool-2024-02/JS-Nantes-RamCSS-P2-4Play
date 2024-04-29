@@ -40,7 +40,7 @@ function Motif() {
         setSolution(randomSolution.nom);
       });
   }, [setSolution]);
-  // console.log(solution);
+  console.warn(solution);
 
   // use colors to determine if letter is at the right place, or in the word, or isn't included
   const validationWordColors = (lettre, index) => {
@@ -96,13 +96,17 @@ function Motif() {
 
     // Win/Lose condition
     if (input.length === 10 && input === solution) {
-      setEndMessage("YOU WIN");
-      setGameOver(true);
+      setTimeout(() => {
+        setEndMessage("YOU WIN");
+        setGameOver(true);
+      }, 700);
     }
 
     if (input.length === 10 && attempt === 5 && input !== solution) {
-      setEndMessage("YOU LOSE");
-      setGameOver(true);
+      setTimeout(() => {
+        setEndMessage("YOU LOSE");
+        setGameOver(true);
+      }, 700);
     }
   }, [input, attempt, solution, endMessage, gameOver]);
 
