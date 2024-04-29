@@ -10,12 +10,12 @@
 @keyframes example {
   0% {
     color: #219ebc;
-    text-shadow: 0 0 10px black;
+    text-shadow: 0 0 10px white;
   }
 
   25% {
     color: #219ebc;
-    text-shadow: 2px 2px 2px black;
+    text-shadow: 2px 2px 2px white;
     transform: translate(-2px, 1px);
   }
 
@@ -27,7 +27,7 @@
 
   50% {
     color: #219ebc;
-    text-shadow: black -3px -3px 2px;
+    text-shadow: white -3px -3px 2px;
     transform: translate(0px, 3px);
   }
 
@@ -39,7 +39,7 @@
 
   80% {
     color: #219ebc;
-    text-shadow: 0 0 10px black;
+    text-shadow: 0 0 10px white;
     transform: translate(-2px, 1px);
   }
 

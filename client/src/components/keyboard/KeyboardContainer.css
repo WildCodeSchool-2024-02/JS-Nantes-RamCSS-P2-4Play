@@ -11,3 +11,10 @@ vwinput {
   width: 90vw;
   background-color: #219ebc;
 }
+
+/* RESPONSIVE */
+@media screen and (min-width: 768px) {
+  .simple-keyboard {
+    width: 70vw;
+  }
+}
