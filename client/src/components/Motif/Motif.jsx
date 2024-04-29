@@ -42,12 +42,29 @@ function Motif() {
   }, [setSolution]);
   console.warn(solution);
 
+  // Function to count occurrences of each letter in a string
+  function countLetterOccurrences(str) {
+    return str.split("").reduce((counts, letter) => {
+      const updatedCounts = { ...counts };
+      updatedCounts[letter] = (updatedCounts[letter] || 0) + 1;
+      return updatedCounts;
+    }, {});
+  }
+
+  // Count occurrences of each letter in the solution
+  const solutionLetterCounts = countLetterOccurrences(solution);
+
   // use colors to determine if letter is at the right place, or in the word, or isn't included
-  const validationWordColors = (lettre, index) => {
-    if (solution[index] === lettre) {
+  const validationWordColors = (letter, index) => {
+    const inputLetterCounts = countLetterOccurrences(input);
+
+    if (solution[index] === letter) {
       return "#2cbfe2"; // blue color
     }
-    if (solution[index] !== lettre && solution.includes(lettre)) {
+    if (
+      solution.includes(letter) &&
+      inputLetterCounts[letter] <= solutionLetterCounts[letter]
+    ) {
       return "#ffb703"; // orange color
     }
     return "white";
