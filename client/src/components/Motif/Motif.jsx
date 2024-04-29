@@ -3,9 +3,7 @@ import "./motif.css";
 import ColorLegend from "./ColorLegend";
 import KeyboardContainer from "../keyboard/KeyboardContainer";
 import FourSquareSpinner from "../Spinner/FourSquareSpinner";
-
 import EndMessage from "./EndMessage";
-
 
 function Motif() {
   const [solution, setSolution] = useState("");
@@ -149,7 +147,6 @@ function Motif() {
       {!solution ? (
         <FourSquareSpinner />
       ) : (
-
         <div>
           {gameOver ? (
             <EndMessage endMessage={endMessage} solution={solution} />
@@ -171,6 +168,7 @@ function Motif() {
             </section>
           )}
           <div className={getGameOverClass()}>
+            <p className="text-attempt">Il reste {6 - attempt} tentatives</p>
             <ColorLegend />
           </div>
         </div>
