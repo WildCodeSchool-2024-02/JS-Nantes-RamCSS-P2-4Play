@@ -1,17 +1,15 @@
 import Confetti from "react-confetti-boom";
 import GameOver from "./GameOver";
+import "./endmessage.css";
 
-function EndMessage({ endMessage }) {
+function EndMessage({ endMessage, solution }) {
   return (
     <div className="motif-endmessage">
       {endMessage === "YOU WIN" ? (
         <>
-          <div>
-            TA PERFORMANCE EST EBOURRIFANTE TA VICTOIRE EST PERMANENTE BRAVO TU
-            AS DEMELE CETTE ENIGME AVEC SUCCES TU AS COIFFE CETTE VICTOIRE AVEC
-            ELEGANCE BRAVO TU AS COUPE COURT A LA COMPETITION{" "}
+          <div className="well-done-message">
+            <p>Bravo, tu as démêlé cette énigme avec succès !</p>
           </div>
-          {/*  react confetti explosion */}
           <Confetti
             mode="boom"
             x={0.5}
@@ -31,9 +29,10 @@ function EndMessage({ endMessage }) {
         </div>
       )}
 
+      <div className="motif-solution">La solution était {solution}</div>
       <a href="http://localhost:3000/motif">
-        <button className="motifbutton" type="button">
-          RESET!
+        <button className="motif-button" type="button">
+          RESET
         </button>
       </a>
     </div>

@@ -128,7 +128,7 @@ function Motif() {
       ) : (
         <div>
           {gameOver ? (
-            <EndMessage endMessage={endMessage} />
+            <EndMessage endMessage={endMessage} solution={solution} />
           ) : (
             <section className="grille-jeux">
               {historicArray.map((el) => (
