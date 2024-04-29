@@ -1,3 +1,50 @@
+.pied-potence {
+  height: 1vw;
+  width: 35vw;
+  background-color: black;
+}
+
+.hauteur-potence {
+  height: 50vw;
+  width: 1vw;
+  background-color: black;
+  margin-left: 15vw;
+}
+
+.largeur-potence {
+  height: 1vw;
+  width: 25vw;
+  background-color: black;
+  margin-left: 15vw;
+}
+
+.corde {
+  height: 10vw;
+  width: 0.625vw;
+  background-color: black;
+  margin-left: 40vw;
+  position: absolute;
+}
+
+.pieceofCheese {
+  width: 16.25vw;
+  height: 10vw;
+  border: 1.25vw solid #ffd700;
+  border-radius: 50%;
+  margin-left: 32vw;
+  position: relative;
+  top: 20vw;
+  background-color: #ffd700;
+}
+
+h1 {
+  text-align: center;
+  color: #2cbfe2;
+  font-family: "Grandstander";
+  font-size: 2.5rem;
+  margin-top: 1rem;
+}
+
 .fromageStyle {
   max-width: 800px;
   display: flex;
@@ -7,47 +54,10 @@
   align-items: center;
 }
 
-h1 {
-  text-align: center;
-}
-
-.cheesePendu {
-  height: 10px;
-  width: 250px;
-  background-color: black;
-}
-
-.cheesePendu1 {
-  height: 400px;
-  width: 10px;
-  background-color: black;
-  margin-left: 120px;
-}
-
-.cheesePendu3 {
-  height: 10px;
-  width: 200px;
-  background-color: black;
-  margin-left: 120px;
-}
-
-.cheesePendu4 {
-  height: 50px;
-  width: 10px;
-  background-color: black;
-  margin-left: 310px;
-  position: absolute;
-}
-
-.pieceofCheese {
-  width: 130px;
-  height: 80px;
-  border: 10px solid #ffd700;
-  border-radius: 5%;
-  margin-left: 250px;
-  position: relative;
-  top: 130px;
-  background-color: #ffd700;
+@media (max-width: 600px) {
+  .fromageStyle {
+    padding: 0 10px; /* Réduit l'espace sur les côtés */
+  }
 }
 
 /*.cheeseWord {

@@ -126,14 +126,15 @@ function Motif() {
         ))}
         {/* {historicArray.length > 0 ? historicArray : null } */}
         {/* next step : si historic.length existe alors on rend la div historic + on map une nouvelle row */}
-        {attempt <= 5 && row.map((el) => (
-          <div
-            key={Math.random() * 1000}
-            // style={{ backgroundColor: feedbackColors[index] }}
-          >
-            {el}
-          </div>
-        ))}
+        {attempt <= 5 &&
+          row.map((el) => (
+            <div
+              key={Math.random() * 1000}
+              // style={{ backgroundColor: feedbackColors[index] }}
+            >
+              {el}
+            </div>
+          ))}
       </div>
       <ColorLegend />
       <MotifGame solution={solution} />
