@@ -2,15 +2,13 @@ import { useState, useEffect } from "react";
 import KeyboardContainer from "../keyboard/KeyboardContainer";
 import "./hangcheese.css";
 import HangcheeseDrawing from "./HangcheeseDrawing";
-// import HangcheeseWord from "./HangcheeseWord";
-// import HangcheeseKeyboard from "./HangcheeseKeyboard";
 
 function HangCheese() {
   const [input, setInput] = useState(""); // input initialisé avec une chaîne vide (pour le clavier)
   const [fromage, setFromage] = useState(null);
   const [answer, setAnswer] = useState(null);
   const [badGuesses, setBadGuesses] = useState([]);
-  const [remainingAttempts, setRemainingAttempts] = useState(6); // Nombre de tentatives restantes
+  const [remainingAttempts, setRemainingAttempts] = useState(5); // Nombre de tentatives restantes
 
   useEffect(() => {
     const randomNum = Math.ceil(Math.random() * 30);
@@ -61,19 +59,41 @@ function HangCheese() {
       }
     }
   }, [input, fromage]);
+
   return (
     <div className="fromageStyle">
       <h1>Le fameux et excellent jeu du fromage pendu !</h1>
-      <div style={{ fontSize: "2rem" }}>{fromage && fromage.fromage}</div>
-      <div style={{ fontSize: "2rem" }}>{answer && answer}</div>
-      <div style={{ fontSize: "2rem", textDecoration: "line-through" }}>
+      {/*  <div style={{ fontSize: "2rem" }}>{fromage && fromage.fromage}</div> */}
+      <div
+        style={{
+          fontSize: "2rem",
+          color: "#2cbfe2",
+          fontFamily: "Grandstander",
+        }}
+      >
+        {answer && answer}
+      </div>
+      <div
+        style={{
+          fontSize: "2rem",
+          textDecoration: "line-through",
+          color: "#2cbfe2",
+          fontFamily: "Grandstander",
+        }}
+      >
         {badGuesses}
       </div>
-      <div>
-        Il te reste {remainingAttempts} chances avant de finir en fondue...
+      <div
+        style={{
+          fontSize: "2rem",
+          color: "#2cbfe2",
+          fontFamily: "Grandstander",
+        }}
+      >
+        Encore {remainingAttempts} chances pour sauver un fromage...
       </div>{" "}
       {/* Afficher le nombre de tentatives restantes */}
-      <HangcheeseDrawing />
+      <HangcheeseDrawing remainingAttempts={remainingAttempts} />
       <KeyboardContainer input={input} setInput={setInput} />
     </div>
   );
