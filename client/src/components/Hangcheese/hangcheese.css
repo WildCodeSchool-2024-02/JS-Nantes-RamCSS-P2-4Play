@@ -2,38 +2,38 @@
 
 .pied-potence {
   height: 1vw;
-  width: 35vw;
+  width: 15vw;
   background-color: black;
 }
 
 .hauteur-potence {
-  height: 50vw;
+  height: 20vw;
   width: 1vw;
   background-color: black;
-  margin-left: 15vw;
+  margin-left: 8vw;
 }
 
 .largeur-potence {
   height: 1vw;
-  width: 25vw;
+  width: 15vw;
   background-color: black;
-  margin-left: 15vw;
+  margin-left: 8vw;
 }
 
 .corde {
-  height: 10vw;
+  height: 5vw;
   width: 0.625vw;
   background-color: black;
-  margin-left: 40vw;
+  margin-left: 23vw;
   position: absolute;
 }
 
 .pieceofCheese {
   width: 16.25vw;
-  height: 10vw;
+  height: 15vw;
   border: 1.25vw solid #ffd700;
   border-radius: 50%;
-  margin-left: 32vw;
+  margin-left: 15vw;
   position: relative;
   top: 20vw;
   background-color: #ffd700;

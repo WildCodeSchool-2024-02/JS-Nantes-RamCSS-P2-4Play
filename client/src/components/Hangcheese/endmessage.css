@@ -1,0 +1,27 @@
+.motif-endmessage {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 60px;
+}
+
+.well-done-message > p {
+  font-family: "Grandstander";
+  color: #219ebc;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.motif-solution {
+  font-family: "Grandstander";
+  color: #2cbfe2;
+  font-size: 1.2em;
+}
+
+.motif-button {
+  background-color: #ffb703;
+  color: white;
+  font-family: "Grandstander";
+  padding: 10px;
+  border-radius: 5px;
+}
