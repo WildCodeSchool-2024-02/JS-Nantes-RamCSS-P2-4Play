@@ -6,7 +6,6 @@ import FourSquareSpinner from "../Spinner/FourSquareSpinner";
 
 import EndMessage from "./EndMessage";
 
-
 function Motif() {
   const [solution, setSolution] = useState("");
   const [input, setInput] = useState("");
@@ -149,7 +148,6 @@ function Motif() {
       {!solution ? (
         <FourSquareSpinner />
       ) : (
-
         <div>
           {gameOver ? (
             <EndMessage endMessage={endMessage} solution={solution} />
