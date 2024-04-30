@@ -24,13 +24,13 @@ const gameItems = [
   {
     title: "Synapsyndromes",
     description: "Tissez des mots, stimulez vos neurones.",
-    image: "./src/assets/images/cerveau-et-circuit-gratuit-vectoriel.png",
+    image: "./src/assets/images/cerveau-et-circuit-gratuit-vectoriel.jpg",
     link: "/synaps",
   },
 ];
 
 function HomePage() {
-  const urlbase = "http://localhost:3000";
+  const urlbase = "http://172.16.29.163:3000";
   return (
     <div className="hp-cards">
       {/* render a CardGame component to each element of the props array */}
