@@ -24,7 +24,7 @@ const gameItems = [
   {
     title: "Synapsyndromes",
     description: "Tissez des mots, stimulez vos neurones.",
-    image: "./src/assets/images/synap_img.png",
+    image: "./src/assets/images/cerveau-et-circuit-gratuit-vectoriel.png",
     link: "/synaps",
   },
 ];
