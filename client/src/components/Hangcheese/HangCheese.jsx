@@ -80,7 +80,11 @@ function HangCheese() {
         />
       )}
 
-      <div>
+      <div style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center"
+      }}>
         <div
           style={{
             fontSize: "2rem",
