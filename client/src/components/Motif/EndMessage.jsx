@@ -30,7 +30,7 @@ function EndMessage({ endMessage, solution }) {
       )}
 
       <div className="motif-solution">La solution était {solution}</div>
-      <a href="http://localhost:3000/motif">
+      <a href={`${import.meta.env.VITE_API_URL}/motif`}>
         <button className="motif-button" type="button">
           RESET
         </button>
