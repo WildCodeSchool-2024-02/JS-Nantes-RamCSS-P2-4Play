@@ -1,9 +1,15 @@
+.body-synaps {
+  overflow: hidden;
+}
+
 #title-synaps {
   color: #2cbfe2;
   font-family: "Grandstander";
   font-size: 2.5rem;
   margin: 2rem;
+  text-align: center;
 }
+
 .container-synaps {
   background-color: rgb(240, 236, 236);
   border: 0 solid;
@@ -15,46 +21,60 @@
   width: 85vw;
   height: 45vh;
   padding: 1vh;
-  margin: 10vh 8vw;
+  margin: auto;
+  text-align: center;
 }
+
 .table-class {
   border-collapse: collapse;
 }
+
 .table-class td {
   text-align: center;
   cursor: pointer;
 }
+
 th,
 td {
   border: 1px solid black;
 }
+
 td.selected {
   background-color: #ffb703;
   color: black;
 }
+
 .found-word {
   text-decoration: line-through;
   color: gray;
 }
+
 #wordlist {
   padding: 10px;
 }
+
 .button-synaps {
   background-color: #2cbfe2;
   border: 1px solid black;
   border-radius: 4px;
-  width: 150px;
-  height: 35px;
   cursor: pointer;
-  margin: 0 32vw;
+  margin-left: 35vw;
+  margin-top: 5vh;
+  padding: 20px;
+  display: flex;
+  justify-items: center;
+  align-items: center;
 }
+
 .button-synaps:link {
   transition: all 0.5s linear 0;
   color: hsl(36, 50%, 50%);
 }
+
 .button-synaps:hover {
   color: hsl(36, 100%, 50%);
 }
+
 @keyframes deplacement {
   0% {
     transform: translateX(0);
@@ -63,19 +83,21 @@ td.selected {
     transform: translateY(100%);
   }
 }
+
 #score-synaps {
   background-color: #ffb703;
   border: 1px solid #000000;
   padding: 10px;
   animation: deplacement 3s ease-in-out infinite alternate;
 }
+
 @media screen and (min-width: 768px) {
   #title-synaps {
-    font-size: 4vw;
+    font-size: 5vw;
   }
   .container-synaps {
     gap: 30px;
-    margin: 1.5rem 25vw;
+    margin: 1.5rem auto;
     padding: 1rem;
     width: 60vw;
     height: 50vh;
@@ -87,6 +109,7 @@ td.selected {
   .button-synaps {
     width: 200px;
     height: 40px;
-    margin: 0 40vw;
+    margin: auto;
+    padding-left: 65px;
   }
 }
