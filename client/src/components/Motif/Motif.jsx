@@ -40,7 +40,6 @@ function Motif() {
         setSolution(randomSolution.nom);
       });
   }, [setSolution]);
-  console.warn(solution);
 
   // Function to count occurrences of each letter in a string
   function countLetterOccurrences(str) {
