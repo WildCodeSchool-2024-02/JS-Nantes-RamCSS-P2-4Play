@@ -141,7 +141,7 @@ function Motif() {
     <section className="motif-game">
       <header>
         <h3>Mo'tif</h3>
-        <img src="./src/assets/images/thierry.png" alt="Thierry Beccaro" />
+        <img src="images/thierry.png" alt="Thierry Beccaro" />
       </header>
       {!solution ? (
         <FourSquareSpinner />
