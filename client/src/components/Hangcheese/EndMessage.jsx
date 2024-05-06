@@ -1,6 +1,7 @@
 import Confetti from "react-confetti-boom";
 import GameOver from "./GameOver";
 import "./endmessage.css";
+import DOMAIN from "../../api/config";
 
 function EndMessage({ endMessage, solution }) {
   return (
@@ -30,7 +31,7 @@ function EndMessage({ endMessage, solution }) {
       )}
 
       <div className="motif-solution">La solution était {solution}</div>
-      <a href={`${import.meta.env.VITE_API_URL}/hangcheese`}>
+      <a href={`${DOMAIN}/hangcheese`}>
         <button className="motif-button" type="button">
           RESET
         </button>

@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import CardGame from "./CardGame";
 import "./home-page.css";
+import DOMAIN from "../../api/config";
 
 const gameItems = [
   {
@@ -30,14 +31,13 @@ const gameItems = [
 ];
 
 function HomePage() {
-  const urlbase = "http://172.16.29.163:3000";
   return (
     <div className="hp-cards">
       {/* render a CardGame component to each element of the props array */}
       <ul>
         {gameItems.map((item) => (
           <li key={item.title}>
-            <NavLink to={urlbase + item.link}>
+            <NavLink to={DOMAIN + item.link}>
               <CardGame gameItems={item} />
             </NavLink>
           </li>
