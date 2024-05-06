@@ -1,5 +1,6 @@
 import Confetti from "react-confetti-boom";
 import GameOver from "./GameOver";
+import DOMAIN from "../../api/config";
 
 function EndMessage({ endMessage, insult }) {
   return (
@@ -30,7 +31,7 @@ function EndMessage({ endMessage, insult }) {
       <div className="endanswer">{insult.slang.toUpperCase()}</div>
       <div>{insult.def_fr}</div>
       <div>{insult.def_en} </div>
-      <a href={`${import.meta.env.VITE_API_URL}/taunts`}>
+      <a href={`${DOMAIN}/taunts`}>
         <button className="tauntsbutton" type="button">
           RESET!
         </button>
